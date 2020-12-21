@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	x="0%" y="0%"
+	width="100%" height="100%"
+	viewBox="0 0 40.0 40.0"
+	enable-background="new 0 0 40.0 40.0"
+	xml:space="preserve">
+	<path
+		fill="#FFFFFF"
+		fill-opacity="1.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.0"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M0.00001,0.00001L40.00,0.00001L40.00,40.00L0.00001,40.00z"/>
+
+	<text 
+		font-size="0.7939136"
+		font-family="default"
+		stroke="#FFFFFF"
+		stroke-width="0.4"
+		stroke-opacity="1.000"
+		fill-opacity="0"
+		text-anchor="start"
+  		transform="rotate(-0.0 29.60712 4.0321274) scale(Infinity 1.0)" >
+		<tspan x="0.0" y="4.0321274"></tspan>
+	</text> 
+
+	<text 
+		font-size="0.7939136"
+		font-family="default"
+		fill="#FFFFFF"
+		stroke-width="0"
+		fill-opacity="0.000"
+		text-anchor="start"
+  		transform="rotate(-0.0 29.60712 4.0321274) scale(Infinity 1.0)" >
+
+		<tspan x="0.0" y="4.0321274"></tspan>
+	</text>
+
+	<text 
+		font-size="1.3650273"
+		font-family="default"
+		stroke="#FFFFFF"
+		stroke-width="0.4"
+		stroke-opacity="1.000"
+		fill-opacity="0"
+		text-anchor="start"
+  		transform="rotate(-0.0 30.197432 11.837818) scale(Infinity 1.0)" >
+		<tspan x="0.0" y="11.837818"></tspan>
+	</text> 
+
+	<text 
+		font-size="1.3650273"
+		font-family="default"
+		fill="#FFFFFF"
+		stroke-width="0"
+		fill-opacity="0.000"
+		text-anchor="start"
+  		transform="rotate(-0.0 30.197432 11.837818) scale(Infinity 1.0)" >
+
+		<tspan x="0.0" y="11.837818"></tspan>
+	</text>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M35.28,10.76C32.01,16.30,30.29,19.55,29.74,22.18C28.99,24.00,28.04,25.49,27.13,26.76C26.22,27.77,24.79,29.37,22.58,30.10C18.92,30.95,15.92,29.37,13.80,28.06C12.18,26.31,11.10,24.48,10.26,22.63C9.83,21.53,8.67,21.37,6.81,20.31C5.04,19.26,3.82,18.01,5.07,16.85C5.90,16.24,6.39,15.94,7.20,15.63C8.10,15.36,8.88,15.37,9.47,15.57C10.38,15.94,11.23,16.70,11.76,17.20C12.79,18.10,13.46,18.63,13.52,19.21C14.37,17.68,14.64,16.01,14.86,14.27C14.86,12.41,15.19,10.31,15.23,7.29C15.19,4.56,15.92,2.94,17.96,2.21C19.00,1.84,19.94,2.07,20.56,2.86C20.79,3.16,20.78,5.19,20.79,9.54C20.75,10.05,20.86,12.11,20.86,13.85L21.00,15.18C20.89,13.28,21.36,10.87,21.87,9.54C21.96,9.31,23.51,6.02,24.57,4.20C25.10,3.33,26.22,2.89,27.39,2.75C28.58,2.76,29.39,3.06,30.01,3.94C30.67,5.30,29.31,7.47,28.28,10.05C27.42,12.49,27.09,13.88,26.81,15.35C26.66,16.41,26.64,17.09,26.64,17.79C26.48,15.34,27.34,14.36,28.97,12.41C29.98,11.34,31.35,9.86,32.28,8.88C33.61,7.91,35.90,8.22,35.30,10.77"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M20.38,22.99L18.63,27.99"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M16.89,24.02Q16.68,26.03,16.18,27.42"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M22.64,24.99Q22.02,26.97,20.72,28.04"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M12.59,27.01C11.14,28.44,12.22,29.52,13.04,30.35Q15.34,32.21,18.63,32.62C20.52,32.78,22.58,32.38,22.41,30.35"/>
+</svg>

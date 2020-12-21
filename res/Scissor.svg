@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	x="0%" y="0%"
+	width="100%" height="100%"
+	viewBox="0 0 40.0 40.0"
+	enable-background="new 0 0 40.0 40.0"
+	xml:space="preserve">
+	<path
+		fill="#FFFFFF"
+		fill-opacity="1.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.0"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M0.00001,0.00001L40.00,0.00001L40.00,40.00L0.00001,40.00z"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="round"
+		stroke-linecap="square"
+		d="M6.73,16.20C1.20,16.54,8.30,-0.96,11.36,4.87C15.14,2.18,19.72,1.54,22.25,4.72C24.13,8.44,25.46,13.51,19.09,6.66L23.62,10.24C28.99,10.82,34.54,11.13,35.05,15.28C35.44,16.96,34.92,19.50,32.86,19.00C30.55,18.24,27.54,17.79,21.46,17.43L24.90,18.00C26.82,18.49,29.02,21.19,31.34,22.96C32.70,24.50,33.20,25.46,33.37,26.47C33.49,27.59,33.47,28.71,33.03,29.45C32.74,30.22,32.30,30.70,31.68,30.89C31.10,30.96,29.49,30.07,29.13,29.70C28.44,29.13,26.27,27.44,23.36,25.62L19.07,23.95Q21.07,24.57,22.42,25.55C21.17,26.88,18.63,28.03,16.67,27.72C15.14,27.80,12.93,26.47,10.54,24.06Q8.83,22.24,7.73,19.48Q7.28,17.88,6.73,16.20Q7.05,8.69,11.36,4.87"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M10.54,9.20Q12.32,10.35,13.94,10.90"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M9.69,12.13Q12.03,14.22,14.37,15.18"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M9.15,14.55Q10.59,16.74,12.03,17.78"/>
+</svg>

@@ -1,0 +1,135 @@
+<!--     Rock Paper Scissor Game Created by _----_     -->
+<!DOCTYPE html>
+<html>
+<meta name ="viewport" content ="width=device-width, initial-scale=1.0">
+<meta name ="mobile-web-app-capable" content ="yes">
+<head>
+<title>Rock Paper Scissor Game</title>
+<style type="text/css">
+html{
+	padding:0px;
+	margin:0px;
+	height:100%;
+	width:100%;
+	font-size:16px;
+}
+body{
+	color:#ffffff;
+	background:linear-gradient(to right, #5470dc, #4fce8a);
+	font-family: 'Carter One', cursive;
+	font-size:16px;
+}
+h1{
+	color:#ff0ff0;
+	position:relative;
+	font-size:13vw;
+	top:0%;
+}
+#UserOptons{
+	display:block;
+}
+#rock{
+		float:left;
+		display:inline
+}
+#paper{
+		display:flex;
+		justify-content:center;
+}
+#scissor{
+		float:right;
+		display:inline;
+}
+img{
+	display:block;
+	height:30vw;
+	width:26vw;
+}
+button{
+		display:inline;
+		outline:none;
+}
+#resolt{
+		display:relative;
+		font-size:7vw;
+}
+
+</style>
+</head>
+<body>
+<marquee><h1>
+Rock Paper Scissor Game </h1></marquee>
+<audio id="audio">
+<source src="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Ftap.mp3?alt=media&token=b0b6401a-f27a-4ece-b1cd-fbb4e1e3ac8c" type="audio/mpeg">
+</audio>
+<br><hr>
+<div id ="resolt">
+<div id ="points">
+Points : 
+</div>
+<div id ="result">
+Result : 
+</div>
+<hr>
+<div id ="humChoic">
+You Choose : 
+</div>
+<div id ="compChoic">
+Computer Choose : 
+</div>
+<hr><hr>
+<div id ="UserOptons">
+<div id ="rock"><button onclick ="userChoice('Rock')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Frock.jpg?alt=media&token=3bf45c72-1fe5-4ae1-8e49-9c1266c3e85e"></button></div>
+<div id ="scissor"><button onclick ="userChoice('Scissor')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fscissor.jpg?alt=media&token=efcc8986-8e22-4877-ac87-b26987e3c3cb"> </button></div>
+<div id ="paper"><button onclick ="userChoice('Paper')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fpaper.jpg?alt=media&token=1a34b749-73ae-4eb5-a74a-adcb390c6af5"> </button></div>
+</div>
+</div>
+<hr>
+
+<script type="text/javascript">
+var pintHChoice, pintCChoice, points, optons, pintResul, pintScore, audio
+function userChoice(choice) {
+	soundKar()
+	pintHChoice = document.getElementById('humChoic');
+	pintHChoice.innerHTML = 'You Choose : '+choice;
+	CompChoic(choice)
+}
+points = 0;
+optons = ["Rock", "Paper", "Scissor"];
+function CompChoic(HumChoice) {
+	x = Math.floor(Math.random()*Math.floor(3));
+	CompChoice = optons[x]
+	pintCChoice = document.getElementById('compChoic');
+	pintCChoice.innerHTML = 'Computer Choose : '+CompChoice;
+	nishkarsh(HumChoice, CompChoice)
+}
+function nishkarsh(HumChoice, CompChoice) {
+	pintResul = document.getElementById('result');
+	pintScore = document.getElementById('points');
+	if (CompChoice == HumChoice) {
+	pintResul.innerHTML = 'Draw'
+	points = points
+	pintScore.innerHTML = 'Points : '+points;
+	} else if (CompChoice == 'Rock' && HumChoice == 'Paper' || CompChoice == 'Paper' && HumChoice == 'Scissor' || CompChoice == 'Scissor' && HumChoice == 'Rock') {
+	pintResul.innerHTML = 'You Win'
+	points++;
+	pintScore.innerHTML = 'Points : '+points;
+	} else if (CompChoice == 'Paper' && HumChoice == 'Rock' || CompChoice == 'Rock' && HumChoice == 'Scissor' || CompChoice == 'Scissor' && HumChoice == 'Paper') {
+	pintResul.innerHTML = 'You Lose'
+	points--;
+	pintScore.innerHTML = 'Points : '+points;
+	} else {
+	pintResul.innerHTML = 'Something Went Wrong'
+	points = 0;
+	}
+}
+//play sound
+function soundKar() {
+	audio = document.getElementById("audio"); 
+	audio.play();
+}
+
+//console.log("Rock Paper Scissor Game Created by _----_")
+</script>
+</body>
+</html>

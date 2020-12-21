@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	x="0%" y="0%"
+	width="100%" height="100%"
+	viewBox="0 0 40.0 40.0"
+	enable-background="new 0 0 40.0 40.0"
+	xml:space="preserve">
+	<path
+		fill="#FFFFFF"
+		fill-opacity="1.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.0"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M0.00001,0.00001L40.00,0.00001L40.00,40.00L0.00001,40.00z"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M11.17,12.73Q13.75,13.75,16.42,13.58"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M11.02,16.62Q14.02,17.82,18.05,18.58"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M10.64,19.62Q13.48,21.36,15.57,22.31"/>
+	<path
+		fill="#FFFFFF"
+		fill-opacity="0.000"
+		fill-rule="nonzero"
+		stroke="#000000"
+		stroke-opacity="1.000"
+		stroke-width="0.39999998"
+		stroke-linejoin="miter"
+		stroke-linecap="square"
+		d="M8.34,22.48C7.13,15.03,9.28,9.58,11.61,7.54C14.43,4.47,17.67,3.18,20.56,2.55C22.71,2.34,25.04,2.59,26.55,3.90C28.06,5.34,28.76,6.75,29.17,8.87C28.18,9.63,24.44,9.31,22.71,7.00C24.44,8.59,27.27,9.41,30.41,9.31C32.17,9.19,34.39,9.63,35.15,12.49C35.29,14.29,34.99,15.48,33.87,16.75C32.40,18.10,30.57,18.53,27.54,18.29C29.92,18.10,31.30,18.53,32.85,17.82C34.49,18.51,35.54,19.91,35.29,23.02C35.05,24.34,34.52,25.53,33.29,26.41C31.83,27.56,28.87,26.99,26.26,27.16C30.91,27.17,31.71,26.98,31.46,28.45C31.36,30.05,30.41,31.01,28.16,31.93C25.28,32.68,22.10,32.55,19.75,31.93C16.79,31.32,14.02,29.60,12.29,27.94C10.27,26.22,9.02,24.52,8.34,22.48C5.98,23.92,3.68,20.18,4.49,15.56C5.36,11.62,7.13,4.86,11.61,7.54"/>
+</svg>

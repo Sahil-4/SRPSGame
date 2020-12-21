@@ -1,0 +1,188 @@
+<!-- Rock Paper Scissor Game -->
+<!-- Two Player Mode -->
+<!DOCTYPE html>
+<html>
+<meta name ="viewport" content ="width=device-width, initial-scale=1.0">
+<meta name ="mobile-web-app-capable" content ="yes">
+<head>
+<title>Rock Paper Scissor Game</title>
+<style type="text/css">
+html{
+	padding:0px;
+	margin:0px;
+	height:100%;
+	width:100%;
+	font-size:16px;
+}
+body{
+	color:#ffffff;
+	background:linear-gradient(to right, #5470dc, #4fce8a);
+	font-family: 'Carter One', cursive;
+	font-size:16px;
+}
+h1{
+	color:#ff0ff0;
+	position:relative;
+	font-size:13vw;
+	top:0%;
+}
+#UserOptons{
+	display:block;
+}
+#rock{
+		float:left;
+		display:inline
+}
+#paper{
+		display:flex;
+		justify-content:center;
+}
+#scissor{
+		float:right;
+		display:inline;
+}
+img{
+	display:block;
+	height:30vw;
+	width:26vw;
+}
+button{
+		display:inline;
+		outline:none;
+}
+#resolt{
+		display:relative;
+		font-size:7vw;
+}
+#result{
+	text-align:center;
+	font-size:11vw;
+	padding-top:5vw;
+}
+
+</style>
+</head>
+<body>
+<marquee><h1>Rock Paper Scissor Game </h1></marquee>
+<audio id="audio">
+<source src="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Ftap.mp3?alt=media&token=b0b6401a-f27a-4ece-b1cd-fbb4e1e3ac8c" type="audio/mpeg">
+</audio>
+<br><hr>
+<div id ="resolt">
+<div id ="p1Choice">
+You Choose : 
+</div>
+<div id ="p2Choice">
+Friend Choose : 
+</div>
+<hr>
+<div id ="p2Score">
+Your Points : 
+</div>
+<div id ="p2Score">
+Friend Points :
+</div>
+<hr><hr>
+<div id ="UserOptons">
+<div id ="rock"><button onclick ="setChoice('Rock')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Frock.jpg?alt=media&token=3bf45c72-1fe5-4ae1-8e49-9c1266c3e85e"></button></div>
+<div id ="scissor"><button onclick ="setChoice('Scissor')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fscissor.jpg?alt=media&token=efcc8986-8e22-4877-ac87-b26987e3c3cb"></button></div>
+<div id ="paper"><button onclick ="setChoice('Paper')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fpaper.jpg?alt=media&token=1a34b749-73ae-4eb5-a74a-adcb390c6af5"></button></div>
+</div>
+</div>
+<hr>
+<div id ="result">
+You Lose
+</div>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+<script type="text/javascript">
+var firebaseConfig = {
+    apiKey: "AIzaSyB6wSNbS0HfjA4hmdYIhlSSr65v5ScuSYo",
+    authDomain: "storage4otherprojs.firebaseapp.com",
+    databaseURL: "https://storage4otherprojs.firebaseio.com",
+    projectId: "storage4otherprojs",
+    storageBucket: "storage4otherprojs.appspot.com",
+    messagingSenderId: "574239214582",
+    appId: "1:574239214582:web:7bc878d36f1ae6549b15d7"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+var p1, p2, code, p1Points, p2Points, p1Choose, p2Choose, p2Choice,result, destination, destination2, resUlt
+//getting User Info from Session Storage
+function getItems() {
+	p1 = window.localStorage.getItem('p1')
+	p2 = window.localStorage.getItem('p2')
+	code = window.localStorage.getItem('code')
+	destination = 'player/'+code+'/'+p1
+	destination2 = 'player/'+code+'/'+p2
+	check(p1, p2, code, destination, destination2)
+	sendDetails(p1, p2, code)
+}
+//send Your Details to our firebase server
+function sendDetails(p1, p2, code) {
+	firebase.database().ref(destination).set({
+	player1: p1,
+	player2: p2,
+	code: code
+	})
+}
+//Printing Player1 Choice & Sending Player1 Choice to the Server
+function setChoice(Choice) {
+	Choice = Choice
+	firebase.database().ref(destination+'/choice').set({
+		Choice: Choice
+	})
+	p1Choose = document.getElementById('p1Choice')
+	p1Choose.innerHTML = "You Choose :" + Choice
+	getChoice()
+}
+
+//Recieving Player2 Choice from Server
+function getChoice() {
+	firebase.database().ref(destination2+'/choice').on('value', function(snapshot) {
+		p2Choice = snapshot.val().Choice
+	})
+	if (p2Choice == 'Rock' || p2Choice == 'Paper' || p2Choice == 'Scissor') {
+	printP2(p2Choice)	
+	}else {
+		getChoice()
+	}
+}
+//Print Player2 Data
+function printP2(p2Choice) {
+	p2Choose = document.getElementById('p2Choice')
+	p2Choose.innerHTML = 'Friend Choose : ' + p2Choice
+	alert(p2Choice)
+//	alert(destination2)
+}
+//Function2Find&PrintResult
+resUlt = document.getElementById('result')
+function resUlt(p1Choice, p2Choice) {
+	if (p1Choice == 'Rock' && p2Choice == 'Rock' || p1Choice == 'Paper' && p2Choice == 'Paper' || p1Choice == 'Scissor' && p2Choice == 'Scissor') {
+		resUlt().innerHTML = "Draw"
+	}
+	else if (p1Choice == 'Rock' && p2Choice == 'Scissor' || p1Choice == 'Paper' && p2Choice == 'Rock' || p1Choice == 'Scissor' && p2Choice == 'Paper') {
+		resUlt().innerHTML = "You Win"
+	}
+	else if (p1Choice == 'Rock' && p2Choice == 'Paper' || p1Choice == 'Paper' && p2Choice == 'Scissor' || p1Choice == 'Scissor' && p2Choice == 'Rock') {
+		resUlt().innerHTML = "You Lose"
+	}
+	else {
+		resUlt().innerHTML = "Choosing Please Wait"
+	}
+}
+
+
+function check(p1, p2, code, destination, destination2) {
+	alert(p1)
+	alert(p2)
+	alert(code)
+	alert(destination)
+	alert(destination2)
+}
+getItems()
+
+</script>
+</body>
+</html>
