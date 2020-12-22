@@ -1,4 +1,4 @@
-# RPSGame
+# SRPSGame
 SRPSG (Simple Rock Paper Scissor Game)
 Simple Web Based Game
 WEB-GAME
