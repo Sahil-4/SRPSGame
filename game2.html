@@ -76,7 +76,7 @@ You Choose :
 Friend Choose : 
 </div>
 <hr>
-<div id ="p2Score">
+<div id ="p1Score">
 Your Points : 
 </div>
 <div id ="p2Score">
@@ -84,15 +84,16 @@ Friend Points :
 </div>
 <hr><hr>
 <div id ="UserOptons">
-<div id ="rock"><button onclick ="setChoice('Rock')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Frock.jpg?alt=media&token=3bf45c72-1fe5-4ae1-8e49-9c1266c3e85e"></button></div>
-<div id ="scissor"><button onclick ="setChoice('Scissor')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fscissor.jpg?alt=media&token=efcc8986-8e22-4877-ac87-b26987e3c3cb"></button></div>
-<div id ="paper"><button onclick ="setChoice('Paper')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fpaper.jpg?alt=media&token=1a34b749-73ae-4eb5-a74a-adcb390c6af5"></button></div>
+<div id ="rock"><button onclick ="setP1Choice('Rock')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Frock.jpg?alt=media&token=3bf45c72-1fe5-4ae1-8e49-9c1266c3e85e"></button></div>
+<div id ="scissor"><button onclick ="setP1Choice('Scissor')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fscissor.jpg?alt=media&token=efcc8986-8e22-4877-ac87-b26987e3c3cb"></button></div>
+<div id ="paper"><button onclick ="setP1Choice('Paper')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fpaper.jpg?alt=media&token=1a34b749-73ae-4eb5-a74a-adcb390c6af5"></button></div>
 </div>
 </div>
 <hr>
 <div id ="result">
-You Lose
+Draw
 </div>
+
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
@@ -107,81 +108,95 @@ var firebaseConfig = {
     appId: "1:574239214582:web:7bc878d36f1ae6549b15d7"
   };
   firebase.initializeApp(firebaseConfig);
+//Declaring Variables
+var p1, p2, Code, p1Points, p2Points, p1Choice, p2Choice;
+p1Points = 0
+p2Points = 0
 
-var p1, p2, code, p1Points, p2Points, p1Choose, p2Choose, p2Choice,result, destination, destination2, resUlt
-//getting User Info from Session Storage
-function getItems() {
+//getting Player Info from Session Storage
+function getItem() {
 	p1 = window.localStorage.getItem('p1')
 	p2 = window.localStorage.getItem('p2')
-	code = window.localStorage.getItem('code')
-	destination = 'player/'+code+'/'+p1
-	destination2 = 'player/'+code+'/'+p2
-	check(p1, p2, code, destination, destination2)
-	sendDetails(p1, p2, code)
+	Code = window.localStorage.getItem('Code')
+	destination = 'player/'+Code+'/'+p1
+	destination2 = 'player/'+Code+'/'+p2
+	sendDetails()
 }
-//send Your Details to our firebase server
-function sendDetails(p1, p2, code) {
+//Sending Player info to the Server
+function sendDetails() {
 	firebase.database().ref(destination).set({
 	player1: p1,
 	player2: p2,
-	code: code
+	Code: Code
 	})
 }
-//Printing Player1 Choice & Sending Player1 Choice to the Server
-function setChoice(Choice) {
-	Choice = Choice
-	firebase.database().ref(destination+'/choice').set({
-		Choice: Choice
+//Sending Player1 Choice to Server
+function setP1Choice(Choice) {
+	firebase.database().ref(destination+'/Choice').set({
+	Choice : Choice
 	})
-	p1Choose = document.getElementById('p1Choice')
-	p1Choose.innerHTML = "You Choose :" + Choice
-	getChoice()
+	p1Choice = Choice
+	//Displaying Player1 Choice on Screen
+	document.getElementById('p1Choice').innerHTML = 'You Choose : '+Choice
+	getP2Choice()
 }
-
-//Recieving Player2 Choice from Server
-function getChoice() {
-	firebase.database().ref(destination2+'/choice').on('value', function(snapshot) {
+//Get Player2 Choice from Server
+function getP2Choice() {
+	firebase.database().ref(destination2+'/Choice').on('value', function(snapshot){
 		p2Choice = snapshot.val().Choice
 	})
-	if (p2Choice == 'Rock' || p2Choice == 'Paper' || p2Choice == 'Scissor') {
-	printP2(p2Choice)	
-	}else {
-		getChoice()
+	printP2Choice(p2Choice)
+}
+//Checking Fetched Data
+function printP2Choice(p2Choice) {
+	if(p2Choice == 'Rock' || p2Choice == 'Paper' || p2Choice == 'Scissor'){
+		//Displaying Player2 Choice on Screen
+		document.getElementById('p2Choice').innerHTML = 'Friend Choose : '+p2Choice
+		giveResult(p1Choice, p2Choice)
+	}else{
+		//Re-Try to get Player2 Choice
+		setTimeout(getP2Choice, '2000')
+		document.getElementById('p2Choice').innerHTML = "Choosing Please Wait"
+		document.getElementById('result').innerHTML = "Waiting"
 	}
 }
-//Print Player2 Data
-function printP2(p2Choice) {
-	p2Choose = document.getElementById('p2Choice')
-	p2Choose.innerHTML = 'Friend Choose : ' + p2Choice
-	alert(p2Choice)
-//	alert(destination2)
-}
-//Function2Find&PrintResult
-resUlt = document.getElementById('result')
-function resUlt(p1Choice, p2Choice) {
+//Printing Result
+function giveResult(p1Choice, p2Choice) {
 	if (p1Choice == 'Rock' && p2Choice == 'Rock' || p1Choice == 'Paper' && p2Choice == 'Paper' || p1Choice == 'Scissor' && p2Choice == 'Scissor') {
-		resUlt().innerHTML = "Draw"
+		p1Points = p1Points
+		p2Points = p2Points
+		document.getElementById('result').innerHTML = "Draw"
+		document.getElementById('p1Score').innerHTML = 'Your Points : '+p1Points
+		document.getElementById('p2Score').innerHTML = 'Friend Points :'+p2Points
 	}
 	else if (p1Choice == 'Rock' && p2Choice == 'Scissor' || p1Choice == 'Paper' && p2Choice == 'Rock' || p1Choice == 'Scissor' && p2Choice == 'Paper') {
-		resUlt().innerHTML = "You Win"
+		p1Points = p1Points+1
+		p2Points = p2Points
+		document.getElementById('result').innerHTML = "You Win"
+		document.getElementById('p1Score').innerHTML = 'Your Points : '+p1Points
+		document.getElementById('p2Score').innerHTML = 'Friend Points :'+p2Points
 	}
 	else if (p1Choice == 'Rock' && p2Choice == 'Paper' || p1Choice == 'Paper' && p2Choice == 'Scissor' || p1Choice == 'Scissor' && p2Choice == 'Rock') {
-		resUlt().innerHTML = "You Lose"
+		p1Points = p1Points
+		p2Points = p2Points+1
+		document.getElementById('result').innerHTML = "You Friwnd Win"
+		document.getElementById('p1Score').innerHTML = 'Your Points : '+p1Points
+		document.getElementById('p2Score').innerHTML = 'Friend Points :'+p2Points
 	}
 	else {
-		resUlt().innerHTML = "Choosing Please Wait"
+		document.getElementById('result').innerHTML = "Wait"
+		document.getElementById('p1Score').innerHTML = 'Your Points : 0'
+		document.getElementById('p2Score').innerHTML = 'Friend Points : 0'
 	}
+		delet()
 }
-
-
-function check(p1, p2, code, destination, destination2) {
-	alert(p1)
-	alert(p2)
-	alert(code)
-	alert(destination)
-	alert(destination2)
+//Deleting Player2 Choice from Server
+function delet() {
+	firebase.database().ref(destination2+'/Choice').set({
+	Choice : 'Fetched'
+	})
 }
-getItems()
+getItem()
 
 </script>
 </body>
