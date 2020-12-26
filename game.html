@@ -43,15 +43,27 @@ h1{
 img{
 	display:block;
 	height:30vw;
-	width:26vw;
+	width:30vw;
 }
 button{
 		display:inline;
-		outline:none;
+		background-color:transparent;
+		border:none;
 }
+/*
 #resolt{
 		display:relative;
 		font-size:7vw;
+}
+*/
+#resolt{
+		display:relative;
+		font-size:7vw;
+}
+#result{
+	text-align:center;
+	font-size:11vw;
+	padding-top:5vw;
 }
 
 </style>
@@ -64,30 +76,34 @@ Rock Paper Scissor Game </h1></marquee>
 </audio>
 <br><hr>
 <div id ="resolt">
-<div id ="points">
-Points : 
-</div>
-<div id ="result">
-Result : 
-</div>
-<hr>
 <div id ="humChoic">
 You Choose : 
 </div>
 <div id ="compChoic">
 Computer Choose : 
 </div>
+<hr>
+<div id ="humPoints">
+Your Points : 
+</div>
+<div id ="compPoints">
+Computer Points :
+</div>
 <hr><hr>
 <div id ="UserOptons">
-<div id ="rock"><button onclick ="userChoice('Rock')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Frock.jpg?alt=media&token=3bf45c72-1fe5-4ae1-8e49-9c1266c3e85e"></button></div>
-<div id ="scissor"><button onclick ="userChoice('Scissor')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fscissor.jpg?alt=media&token=efcc8986-8e22-4877-ac87-b26987e3c3cb"> </button></div>
-<div id ="paper"><button onclick ="userChoice('Paper')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fpaper.jpg?alt=media&token=1a34b749-73ae-4eb5-a74a-adcb390c6af5"> </button></div>
+<div id ="rock"><button onclick ="userChoice('Rock')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2FRock.svg?alt=media&token=7a2ffd8e-0840-423c-81a4-4b9e1b6bb458"></button></div>
+<div id ="scissor"><button onclick ="userChoice('Scissor')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2FScissor.svg?alt=media&token=bbf79792-d72d-449b-9470-c96b21543d24"></button></div>
+<div id ="paper"><button onclick ="userChoice('Paper')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2FPaper.svg?alt=media&token=50e92d1f-3ab5-4231-99c7-e10cd918c478"></button></div>
 </div>
 </div>
 <hr>
-
+<div id ="result">
+Result
+</div>
 <script type="text/javascript">
-var pintHChoice, pintCChoice, points, optons, pintResul, pintScore, audio
+var pintHChoice, pintCChoice, points, optons, pintResul, pintScore, audio, humPoints, compPoints
+humPoints = 0
+compPoints = 0
 function userChoice(choice) {
 	soundKar()
 	pintHChoice = document.getElementById('humChoic');
@@ -103,32 +119,41 @@ function CompChoic(HumChoice) {
 	pintCChoice.innerHTML = 'Computer Choose : '+CompChoice;
 	nishkarsh(HumChoice, CompChoice)
 }
-function nishkarsh(HumChoice, CompChoice) {
+function nishkarsh(humChoice, compChoice) {
 	pintResul = document.getElementById('result');
 	pintScore = document.getElementById('points');
-	if (CompChoice == HumChoice) {
-	pintResul.innerHTML = 'Draw'
-	points = points
-	pintScore.innerHTML = 'Points : '+points;
-	} else if (CompChoice == 'Rock' && HumChoice == 'Paper' || CompChoice == 'Paper' && HumChoice == 'Scissor' || CompChoice == 'Scissor' && HumChoice == 'Rock') {
-	pintResul.innerHTML = 'You Win'
-	points++;
-	pintScore.innerHTML = 'Points : '+points;
-	} else if (CompChoice == 'Paper' && HumChoice == 'Rock' || CompChoice == 'Rock' && HumChoice == 'Scissor' || CompChoice == 'Scissor' && HumChoice == 'Paper') {
-	pintResul.innerHTML = 'You Lose'
-	points--;
-	pintScore.innerHTML = 'Points : '+points;
-	} else {
-	pintResul.innerHTML = 'Something Went Wrong'
-	points = 0;
-	}
+if (humChoice == 'Rock' && compChoice == 'Rock' || humChoice == 'Paper' && compChoice == 'Paper' || humChoice == 'Scissor' && compChoice == 'Scissor') {
+	humPoints = humPoints
+	compPoints = compPoints
+	document.getElementById('result').innerHTML = "Draw"
+	document.getElementById('humPoints').innerHTML = 'Your Points : '+humPoints
+	document.getElementById('compPoints').innerHTML = 'Friend Points :'+compPoints
+}
+else if (humChoice == 'Rock' && compChoice == 'Scissor' || humChoice == 'Paper' && compChoice == 'Rock' || humChoice == 'Scissor' && compChoice == 'Paper') {
+	humPoints = humPoints+1
+	compPoints = compPoints
+	document.getElementById('result').innerHTML = "You Win"
+	document.getElementById('humPoints').innerHTML = 'Your Points : '+humPoints
+	document.getElementById('compPoints').innerHTML = 'Friend Points :'+compPoints
+}
+else if (humChoice == 'Rock' && compChoice == 'Paper' || humChoice == 'Paper' && compChoice == 'Scissor' || humChoice == 'Scissor' && compChoice == 'Rock') {
+	humPoints = humPoints
+	compPoints = compPoints+1
+	document.getElementById('result').innerHTML = "Computer Win"
+	document.getElementById('humPoints').innerHTML = 'Your Points : '+humPoints
+	document.getElementById('compPoints').innerHTML = 'Friend Points :'+compPoints
+}
+else {
+	document.getElementById('result').innerHTML = "Wait"
+	document.getElementById('p1Score').innerHTML = 'Your Points : 0'
+	document.getElementById('p2Score').innerHTML = 'Friend Points : 0'
+}
 }
 //play sound
 function soundKar() {
 	audio = document.getElementById("audio"); 
 	audio.play();
 }
-
 //console.log("Rock Paper Scissor Game Created by _----_")
 </script>
 </body>

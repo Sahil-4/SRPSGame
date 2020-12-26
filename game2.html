@@ -44,11 +44,12 @@ h1{
 img{
 	display:block;
 	height:30vw;
-	width:26vw;
+	width:30vw;
 }
 button{
 		display:inline;
-		outline:none;
+		background-color:transparent;
+		border:none;
 }
 #resolt{
 		display:relative;
@@ -59,7 +60,6 @@ button{
 	font-size:11vw;
 	padding-top:5vw;
 }
-
 </style>
 </head>
 <body>
@@ -84,16 +84,15 @@ Friend Points :
 </div>
 <hr><hr>
 <div id ="UserOptons">
-<div id ="rock"><button onclick ="setP1Choice('Rock')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Frock.jpg?alt=media&token=3bf45c72-1fe5-4ae1-8e49-9c1266c3e85e"></button></div>
-<div id ="scissor"><button onclick ="setP1Choice('Scissor')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fscissor.jpg?alt=media&token=efcc8986-8e22-4877-ac87-b26987e3c3cb"></button></div>
-<div id ="paper"><button onclick ="setP1Choice('Paper')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fpaper.jpg?alt=media&token=1a34b749-73ae-4eb5-a74a-adcb390c6af5"></button></div>
+<div id ="rock"><button onclick ="setP1Choice('Rock')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2FRock.svg?alt=media&token=7a2ffd8e-0840-423c-81a4-4b9e1b6bb458"></button></div>
+<div id ="scissor"><button onclick ="setP1Choice('Scissor')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2FScissor.svg?alt=media&token=bbf79792-d72d-449b-9470-c96b21543d24"></button></div>
+<div id ="paper"><button onclick ="setP1Choice('Paper')"><img src ="https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2FPaper.svg?alt=media&token=50e92d1f-3ab5-4231-99c7-e10cd918c478"></button></div>
 </div>
 </div>
 <hr>
 <div id ="result">
-Draw
+Result
 </div>
-
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
@@ -112,7 +111,6 @@ var firebaseConfig = {
 var p1, p2, Code, p1Points, p2Points, p1Choice, p2Choice;
 p1Points = 0
 p2Points = 0
-
 //getting Player Info from Session Storage
 function getItem() {
 	p1 = window.localStorage.getItem('p1')
@@ -132,6 +130,7 @@ function sendDetails() {
 }
 //Sending Player1 Choice to Server
 function setP1Choice(Choice) {
+	soundKar()
 	firebase.database().ref(destination+'/Choice').set({
 	Choice : Choice
 	})
@@ -196,8 +195,11 @@ function delet() {
 	Choice : 'Fetched'
 	})
 }
+function soundKar() {
+	audio = document.getElementById("audio"); 
+	audio.play();
+}
 getItem()
-
 </script>
 </body>
 </html>
