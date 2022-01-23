@@ -1,0 +1,18 @@
+
+      <h1>Rock Paper Scissor Game </h1>
+      <div id="humChoic">You Choose :</div>
+      <div id="compChoic">Opponent Choose :</div>
+      <div id="humPoints">Your Points :</div>
+      <div id="compPoints">Opponent's Points :</div>
+      <div id="UserOptons">
+        <div id="rock">
+          <button onclick="userChoice('Rock')"></button>
+        </div>
+        <div id="scissor">
+          <button onclick="userChoice('Scissor')"></button>
+        </div>
+        <div id="paper">
+          <button onclick="userChoice('Paper')"></button>
+        </div>
+      </div>
+      <div id="result">Result</div>

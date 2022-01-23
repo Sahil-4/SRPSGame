@@ -1,0 +1,75 @@
+/* Styling home page */
+.home-page {
+  position: fixed;
+  top: 70px;
+  left: 70px;
+}
+
+.home-page-nav-links {
+  font-size: 1.7rem;
+  color: #d7e2e2;
+}
+
+.creator-signature {
+  color: #2f4e4e;
+  font-size: 2rem;
+}
+
+/* Styled home page */
+
+/* Styling game page */
+
+.score-board {
+  /* display: flex; */
+  font-size: 3rem;
+}
+/* 
+.score-boards {
+  width: 50%;
+} */
+
+.game-title {
+  text-align: center;
+  font-size: 2.3rem;
+}
+
+.score-boards {
+  font-size: 1rem;
+}
+
+#result {
+  font-size: 2rem;
+}
+
+.choice-image {
+  width: 33%;
+  border: 1px solid #000;
+}
+
+.chat-box {
+  position: fixed;
+  bottom: 0;
+}
+
+.message-box {
+  min-height: 20px;
+  background: #fff;
+  color: #000;
+  outline: none;
+  border: 1px solid #000;
+}
+
+#send-chat-message {
+  height: 20px;
+  width: 80%;
+}
+
+.chat-button {
+  background: #fff;
+  color: #000;
+  width: 10%;
+  outline: none;
+  border: 1 px solid #000;
+}
+
+/* Styled game page */
