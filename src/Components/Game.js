@@ -1,20 +1,9 @@
 import React from "react";
-import { useContext } from "react";
 import rockImage from "./assets/rock.png";
 import paperImage from "./assets/paper.png";
 import scissorImage from "./assets/scissor.png";
-import PlayerDataContext from "../Context/PlayerData/PlayerDataContext";
 
 const Game = () => {
-  const {
-    playerChoice,
-    playerPoints,
-    opponentChoice,
-    opponentPoints,
-    compareChoiceWithBot,
-    result,
-  } = useContext(PlayerDataContext);
-
   return (
     <div className="game-page H100 W100">
       <h1 className="game-title">Rock Paper Scissor</h1>
@@ -22,19 +11,19 @@ const Game = () => {
       <div className="score-board W100">
         {/* <div className="choice"> */}
         <div className="your-score-board score-boards">
-          <h2>You choose : {playerChoice}</h2>
-          <h2>Your Points : {playerPoints}</h2>
+          <h2>You choose : Rock</h2>
+          <h2>Your Points : 8</h2>
         </div>
 
         {/* <div className="points"> */}
         <div className="opponent-score-board score-boards">
-          <h2>Opponent choose : {opponentChoice} </h2>
-          <h2>Opponent's Points : {opponentPoints} </h2>
+          <h2>Opponent choose : Scissor</h2>
+          <h2>Opponent's Points : 5</h2>
         </div>
       </div>
 
       <div className="result-box W100">
-        <h5 id="result">{result}</h5>
+        <h5 id="result">You Win</h5>
       </div>
 
       <div className="options-box W100">
@@ -43,7 +32,8 @@ const Game = () => {
           alt="Option Rock"
           className="choice-image"
           onClick={() => {
-            compareChoiceWithBot(0);
+            // compareChoiceWithBot(0);
+            console.log("Under Development");
           }}
         />
         <img
@@ -51,7 +41,8 @@ const Game = () => {
           alt="Option Paper"
           className="choice-image"
           onClick={() => {
-            compareChoiceWithBot(1);
+            // compareChoiceWithBot(1);
+            console.log("Under Development");
           }}
         />
         <img
@@ -59,7 +50,8 @@ const Game = () => {
           alt="Option Scissor"
           className="choice-image"
           onClick={() => {
-            compareChoiceWithBot(2);
+            // compareChoiceWithBot(2);
+            console.log("Under Development");
           }}
         />
       </div>
