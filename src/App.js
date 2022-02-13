@@ -4,6 +4,8 @@ import Home from './Components/Home';
 import Help from './Components/Help';
 import About from './Components/About';
 import Game from "./Components/Game";
+import Login from "./Components/Login";
+import GameMultiplayer from "./Components/GameMultiplayer";
 import Test from "./Components/Test";
 import {
   BrowserRouter as Router,
@@ -19,7 +21,9 @@ function App() {
         <Router>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/start" element={<Game />} />
+            <Route exact path="/play" element={<Game />} />
+            <Route exact path="/join" element={<Login />} />
+            <Route exact path="/play-two" element={<GameMultiplayer />} />
             <Route exact path="/help" element={<Help />} />
             <Route exact path="/about" element={<About />} />
             <Route exact path="/test" element={<Test />} />

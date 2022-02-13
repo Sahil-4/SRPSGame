@@ -1,15 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import GameContext from "../Context/Game/GameContext";
 
 const Test = () => {
   const [message, setMessage] = useState("");
 
-  const { connectToServer, sendChat, receivedMessage } =
-    useContext(GameContext);
-
-  useEffect(() => {
-    connectToServer();
-  }, []);
+  const { sendChat, receivedMessage } = useContext(GameContext);
 
   const handleOnChange = (e) => {
     setMessage(e.target.value);
