@@ -8,6 +8,7 @@
 .home-page-nav-links {
   font-size: 1.7rem;
   margin: 5px 0;
+  cursor: pointer;
   color: #fffaff;
 }
 
@@ -16,10 +17,46 @@
   font-size: 2rem;
 }
 
+.ask-game-type {
+  height: 100vh;
+  width: 100vw;
+  background: red;
+}
 /* Styled home page */
 
-/* Styling game page */
+/* Styling alert box */
+.alert-box {
+  color: #fffaff;
+  background: #a020a0;
+  border-radius: 0 0 4px 4px;
+}
 
+.progress-bar {
+  height: 5px;
+  margin-top: 3px;
+}
+
+#progress {
+  height: 100%;
+  width: 0%;
+  background: #0a0a0a;
+  animation-name: incwidth;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+}
+
+@keyframes incwidth {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* Styling alert box */
+
+/* Styling game page */
 .game-title {
   text-align: center;
   font-size: 2.5rem;
@@ -46,47 +83,104 @@
   width: 33%;
   border: 1px solid #0e0f19;
 }
+/* Styled game page */
+
+/* Styling login page */
+.login-page {
+  font-size: 2rem;
+  margin-top: 13vh;
+}
+
+.input {
+  width: 80%;
+  margin: auto;
+  outline: none;
+  display: block;
+  font-size: 1.5rem;
+  border-radius: 2px;
+  margin-bottom: 3px;
+  border: transparent;
+}
+
+.btn {
+  width: 25%;
+  height: 5%;
+  float: right;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 3px;
+  margin: 12px 60px 0 0;
+  border: transparent;
+}
+/* Styled login page */
 
 /* Styling chats section */
 .chat-box {
+  height: 20%;
+  position: fixed;
+  bottom: 0;
+  transition-duration: 1.5s;
+}
+
+.chat-box-active {
+  height: 70%;
+}
+
+.exp-or-col-chats-btn {
+  height: 20px;
+  position: fixed;
+  right: 0;
+}
+
+.chat-message {
+  background: #607471;
+  position: relative;
+  top: 20px;
+  padding-bottom: 40px;
+}
+
+.chat-message-active {
+  height: calc(100% - 20px);
+}
+
+.chat {
+  width: 60%;
+  color: #fffaff;
+  background: #0e0f19;
+  margin: 3px 0;
+  padding: 0 3px;
+  border-radius: 6px;
+}
+
+.send-chat {
+  text-align: right;
+  float: right;
+}
+
+#chat-form {
   position: fixed;
   bottom: 0;
 }
 
-.message-box {
-  height: 42px;
+.chat-form-element {
+  height: 36px;
   color: #0e0f19;
   background: #fffaff;
   outline: none;
-  overflow: hidden;
   border: 1px solid #0e0f19;
 }
 
-#send-chat-message {
-  height: 36px;
+.message-box {
   width: 75%;
+  overflow: hidden;
 }
 
 .chat-button {
-  height: 36px;
-  background: #fffaff;
   width: 10%;
-  color: #0e0f19;
-  outline: none;
-  border: 1px solid #0e0f19;
 }
 
 #send-chat-button {
   width: 15%;
 }
-
-/* Styled game page */
-
-/*  */
-.ask-game-type {
-  height: 100vh;
-  width: 100vw;
-  background: red;
-}
-
-/*  */
+/* Styled chats section */

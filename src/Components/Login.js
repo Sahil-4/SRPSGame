@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router";
+import GameContext from "../Context/Game/GameContext";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { playerData, setPlayerData, setDefault, showAlert } =
+    useContext(GameContext);
+
+  const { name, friend_name, room_code } = playerData;
+
+  useEffect(() => {
+    setDefault();
+  }, []);
+
   const handleOnChange = (e) => {
-    console.log("Under Development");
-    // setData({ ...data, [e.target.name]: e.target.value });
+    setPlayerData({ ...playerData, [e.target.name]: e.target.value });
   };
 
   const handleOnSubmit = (e) => {
-    //   logic to join room
-    console.log("Under Development");
+    e.preventDefault();
+    navigate("/play-two");
   };
 
   return (
@@ -17,22 +28,32 @@ const Login = () => {
         <input
           name="name"
           type="text"
-          //   value={data.name}
+          required="True"
+          className="input"
+          value={name}
           onChange={handleOnChange}
         />
         <input
           name="friend_name"
           type="text"
-          //   value={data.friend_name}
+          required="True"
+          className="input"
+          value={friend_name}
           onChange={handleOnChange}
         />
         <input
           name="room_code"
           type="number"
-          //   value={data.room_code}
+          required="True"
+          className="input"
+          min="100"
+          max="999"
+          value={room_code}
           onChange={handleOnChange}
         />
-        <button type="submit">Start</button>
+        <button type="submit" className="btn">
+          Start
+        </button>
       </form>
     </div>
   );

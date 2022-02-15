@@ -1,28 +1,78 @@
-import React from 'react'
+import React, { useContext, useState } from "react";
+import GameContext from "../Context/Game/GameContext";
 
 const Chat = () => {
-    return (
-        <div className="chat-box W100">
-            <form method="POST">
-                <div id="received-chat-message" className="message-box W100">
-                    <p className="chat-messages send-chat">You : Hello</p>
-                    <p className="chat-messages received-chat">Alpha : Hii</p>
-                    {/* <p className="chat-messages send-chat">You : Game kesa hai</p>
-                    <p className="chat-messages received-chat">Alpha : acha hai</p>
-                    <p className="chat-messages received-chat">Alpha : tuje kesa lga</p>
-                    <p className="chat-messages send-chat">You : acha lga</p>
-                    <p className="chat-messages send-chat">You : color combo acha hai</p> */}
-                </div>
-                <input type="text" id="send-chat-message" className="message-box" />
-                <button id="emoji-button" className="chat-button">
-                    emoji
-                </button>
-                <button id="send-chat-button" className="chat-button" type="submit">
-                    send
-                </button>
-            </form>
-        </div>
-    )
-}
+  const { sendChat, Messages } = useContext(GameContext);
+  const [message, setmessage] = useState("");
+  const [status, setStatus] = useState("");
 
-export default Chat
+  const expandOrCollapseChats = () => {
+    if (status === "active") {
+      setStatus("");
+    } else {
+      setStatus("active");
+    }
+  };
+
+  return (
+    <div className={`chat-box chat-box-${status} W100`}>
+      <button className="exp-or-col-chats-btn" onClick={expandOrCollapseChats}>
+        close
+      </button>
+
+      <div id="chat-message" className="chat-message chat-message-active W100">
+        {Messages.length !== 0 &&
+          Messages.map((message, index) => {
+            if (message.author) {
+              return (
+                <div key={index} className="chat send-chat W100">
+                  {message.message}
+                </div>
+              );
+            } else {
+              return (
+                <div key={index} className="chat received-chat W100">
+                  {message.message}
+                </div>
+              );
+            }
+          })}
+        {Messages.length === 0 && (
+          <div className="chat send-chat W100">No Chats to Show</div>
+        )}
+      </div>
+
+      <form
+        id="chat-form"
+        className="W100"
+        method="POST"
+        onSubmit={(e) => {
+          e.preventDefault();
+          sendChat(message);
+          setmessage("");
+        }}
+      >
+        <input
+          type="text"
+          className="message-box chat-form-element"
+          value={message}
+          onChange={(e) => {
+            setmessage(e.target.value);
+          }}
+        />
+        <button id="emoji-button" className="chat-button chat-form-element">
+          Emoji
+        </button>
+        <button
+          id="send-chat-button"
+          className="chat-button chat-form-element"
+          type="submit"
+        >
+          Send
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Chat;

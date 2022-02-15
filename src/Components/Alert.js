@@ -1,15 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import GameContext from "../Context/Game/GameContext";
 
-const Test = () => {
+const Alert = () => {
   const { Alert, setAlert } = useContext(GameContext);
-
-  const showALert = () => {
-    // show alert
-    if (Alert.type === "") {
-      setAlert({ type: "New Alert", msg: "Message" });
-    }
-  };
 
   const hideALert = () => {
     // hide alert after 3s
@@ -25,17 +18,16 @@ const Test = () => {
   }, [Alert]);
 
   return (
-    <div className="W100">
-      <button
-        className="btn"
-        onClick={() => {
-          showALert();
-        }}
-      >
-        Click
-      </button>
+    <div className="alert-box W100">
+      <p id="alert-type">{Alert.type}</p>
+      <p id="alert-msg">{Alert.msg}</p>
+      {Alert.msg && (
+        <div className="progress-bar W100">
+          <div id="progress"></div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default Test;
+export default Alert;

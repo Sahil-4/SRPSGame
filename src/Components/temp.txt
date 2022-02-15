@@ -1,18 +1,159 @@
+const rockImage =
+  "https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fv2%2Frock.png?alt=media&token=e7590619-3886-48da-bcf3-3ae8cfb22a15";
+const paperImage =
+  "https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fv2%2Fpaper.png?alt=media&token=83ba8215-215c-461e-92c8-dc423d4569b9";
+const scissorImage =
+  "https://firebasestorage.googleapis.com/v0/b/storage4otherprojs.appspot.com/o/RPSG%2Fv2%2Fscissor.png?alt=media&token=6492198f-449a-4836-b868-799718209f08";
 
-      <h1>Rock Paper Scissor Game </h1>
-      <div id="humChoic">You Choose :</div>
-      <div id="compChoic">Opponent Choose :</div>
-      <div id="humPoints">Your Points :</div>
-      <div id="compPoints">Opponent's Points :</div>
-      <div id="UserOptons">
-        <div id="rock">
-          <button onclick="userChoice('Rock')"></button>
-        </div>
-        <div id="scissor">
-          <button onclick="userChoice('Scissor')"></button>
-        </div>
-        <div id="paper">
-          <button onclick="userChoice('Paper')"></button>
-        </div>
+
+
+
+/* Styling chats section */
+.chat-box {
+  max-height: 70%;
+  background: red;
+  position: fixed;
+  bottom: 0;
+  outline: 2px solid black;
+}
+
+.exp-or-col-chats-btn {
+  height: 20px;
+  float: right;
+  outline: none;
+  border: none;
+}
+
+.chat-message {
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.chat {
+  max-width: 65%;
+  background: rgb(94, 94, 143);
+  margin: 3px 0;
+  padding: 0 3px;
+  border-radius: 13px;
+}
+
+.send-chat {
+  text-align: right;
+  float: right;
+}
+
+#chat-form {
+  position: fixed;
+  bottom: 0;
+}
+
+.chat-form-element {
+  height: 36px;
+  color: #0e0f19;
+  background: #fffaff;
+  outline: none;
+  border: 1px solid #0e0f19;
+}
+
+.message-box {
+  width: 75%;
+  overflow: hidden;
+}
+
+.chat-button {
+  width: 10%;
+}
+
+#send-chat-button {
+  width: 15%;
+}
+/* Styled chats section */
+
+
+
+
+
+
+
+
+
+    <div className="chat-box W100">
+      <button className="exp-or-col-chats-btn">close</button>
+
+      <div id="chat-message" className="chat-message W100">
+        {Messages.map((message, index) => {
+          if (message.author) {
+            return (
+              <div key={index} className="chat send-chat W100">
+                {message.message}
+              </div>
+            );
+          } else {
+            return (
+              <div key={index} className="chat received-chat W100">
+                {message.message}
+              </div>
+            );
+          }
+        })}
       </div>
-      <div id="result">Result</div>
+
+      <form
+        id="chat-form"
+        className="W100"
+        method="POST"
+        onSubmit={(e) => {
+          e.preventDefault();
+          sendChat(message);
+          setmessage("");
+        }}
+      >
+        <input
+          type="text"
+          className="message-box chat-form-element"
+          value={message}
+          onChange={(e) => {
+            setmessage(e.target.value);
+          }}
+        />
+        <button id="emoji-button" className="chat-button chat-form-element">
+          Emoji
+        </button>
+        <button
+          id="send-chat-button"
+          className="chat-button chat-form-element"
+          type="submit"
+        >
+          Send
+        </button>
+      </form>
+    </div>
+  );
+
+
+
+
+
+
+
+
+        {Messages.length !== 0 &&
+          Messages.map((message, index) => {
+            if (message.author) {
+              return (
+                <div key={index} className="chat send-chat W100">
+                  {message.message}
+                </div>
+              );
+            } else {
+              return (
+                <div key={index} className="chat received-chat W100">
+                  {message.message}
+                </div>
+              );
+            }
+          })}
+        {Messages.length === 0 && (
+          <div className="chat send-chat W100">No Chats to Show</div>
+        )}
