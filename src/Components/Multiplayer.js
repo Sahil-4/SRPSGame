@@ -15,9 +15,7 @@ const Multiplayer = () => {
 
   useEffect(() => {
     const { name } = playerData;
-    if (name) {
-      connectToServer();
-    } else {
+    if (!name) {
       navigate("/join");
     }
   }, [playerData, connectToServer, navigate]);

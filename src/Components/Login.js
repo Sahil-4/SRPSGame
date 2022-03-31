@@ -4,10 +4,10 @@ import GameContext from "../Context/Game/GameContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { playerData, setPlayerData, setDefault, showAlert } =
+  const { playerData, setPlayerData, setDefault, connectToServer } =
     useContext(GameContext);
 
-  const { name, friend_name, room_code } = playerData;
+  const { name, room_code } = playerData;
 
   useEffect(() => {
     setDefault();
@@ -19,7 +19,9 @@ const Login = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    connectToServer();
     navigate("/play-two");
+    // navigate("/test");
   };
 
   return (
@@ -31,14 +33,6 @@ const Login = () => {
           required="True"
           className="input"
           value={name}
-          onChange={handleOnChange}
-        />
-        <input
-          name="friend_name"
-          type="text"
-          required="True"
-          className="input"
-          value={friend_name}
           onChange={handleOnChange}
         />
         <input

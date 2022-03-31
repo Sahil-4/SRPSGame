@@ -9,7 +9,6 @@ const GameState = (props) => {
 
     const [playerData, setPlayerData] = useState({
         name: "",
-        friend_name: "",
         room_code: "",
         socketID: ""
     });
@@ -17,13 +16,12 @@ const GameState = (props) => {
     const [Choices, setChoices] = useState({ playerChoice: "Choose First", opponentChoice: "Waiting..." });
     const [Points, setPoints] = useState({ playerPoints: 0, opponentPoints: 0 });
     const [Result, setResult] = useState("Draw");
-    const [Messages] = useState([]);
+    const [Messages, setMessages] = useState([]);
     const [Alert, setAlert] = useState({ type: "", msg: "" });
 
     const setDefault = () => {
         setPlayerData({
             name: "",
-            friend_name: "",
             room_code: "",
             socketID: ""
         });
@@ -31,8 +29,12 @@ const GameState = (props) => {
         setChoices({ playerChoice: "Choose First", opponentChoice: "Waiting..." });
         setResult("Draw");
         Messages.length = 0;
-        socket = io();
+        socket = null;
     }
+
+    const showAlert = (type, msg) => {
+        setAlert({ type: type, msg: msg });
+    };
 
     const connectToServer = () => {
         console.log("Connecting to server");
@@ -42,11 +44,11 @@ const GameState = (props) => {
             extraHeaders: {
                 "App-Name": "App-Name",
             },
+            reconnection: false,
         });
 
         socket.on('connect_error', () => {
-            // handle server error here
-            showAlert("Error", "Failed to connect with server");
+            showAlert("Failed to connect", "Please try again later");
             setDefault();
         });
 
@@ -66,9 +68,9 @@ const GameState = (props) => {
             alert(message);
         })
 
-        socket.on('receive-message', (message) => {
-            console.log(message);
-            Messages.push({ message: message, author: false });
+        socket.on('receive-message', (data) => {
+            console.log(data);
+            Messages.push({ message: data.message, author: data.name });
         })
 
         socket.on("receive-choice", (choice) => {
@@ -77,44 +79,23 @@ const GameState = (props) => {
         });
     }
 
-
-    const showAlert = (type, msg) => {
-        // show alert
-        if (Alert.type === "") {
-            setAlert({ type: type, msg: msg });
-        }
-    };
-
     const computerChoice = () => {
-        setAlert({ type: "Hello", msg: "Hii" }); // only for test alert component  
         return Math.floor(Math.random() * 3);
     }
 
     const playWithBot = (userChoice) => {
-        // have to redesign logic 
-        evaluate(userChoice, computerChoice());
+        let selfChoice = options[userChoice];
+        let opponentChoice = options[computerChoice()];
+        setChoices({ playerChoice: selfChoice, opponentChoice: opponentChoice })
+        evaluate(selfChoice, opponentChoice);
     }
 
     const playWithFriend = (userChoice) => {
-        // have to redesign logic 
-        if (Choices.opponentChoice !== "Waiting...") {
-            evaluate(userChoice, Choices.opponentChoice);
-        } else {
-            setTimeout(() => {
-                playWithFriend(userChoice);
-            }, 1500);
-        }
-
-        setTimeout(() => {
-            setChoices({ playerChoice: "Choose from below", opponentChoice: "Waiting..." });
-        }, 2000);
+        // !issue : have to redesign logic 
+        console.log("Under Development");
     }
 
-    const evaluate = (player1Choice, player2Choice) => {
-        let selfChoice = options[player1Choice];
-        let opponentChoice = options[player2Choice];
-        setChoices({ playerChoice: selfChoice, opponentChoice: opponentChoice })
-
+    const evaluate = (selfChoice, opponentChoice) => {
         if (opponentChoice === selfChoice) {
             setResult("Its a Draw");
         } else if ((opponentChoice === "Rock" && selfChoice === "Paper") || (opponentChoice === "Paper" && selfChoice === "Scissor") || (opponentChoice === "Scissor" && selfChoice === "Rock")) {
@@ -127,14 +108,22 @@ const GameState = (props) => {
     }
 
     const sendChat = (message) => {
-        let Data = { room_code: playerData.room_code, message: message }
-        Messages.push({ message: message, author: true });
-        socket.emit("send-message", Data);
+        try {
+            let Data = { room_code: playerData.room_code, message: message, name: playerData.name }
+            Messages.push({ message: message, author: playerData.name });
+            socket.emit("send-message", Data);
+        } catch (error) {
+            showAlert("Error", "Failed to send message");
+        }
     };
 
     const sendChoice = (choice) => {
-        let Data = { room_code: playerData.room_code, choice: choice }
-        socket.emit('send-choice', Data);
+        try {
+            let Data = { room_code: playerData.room_code, choice: choice }
+            socket.emit('send-choice', Data);
+        } catch (error) {
+            showAlert("Error", "Please login again.");
+        }
     }
 
     return (

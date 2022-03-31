@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import GameContext from "../Context/Game/GameContext";
 
 const Chat = () => {
-  const { sendChat, Messages } = useContext(GameContext);
+  const { sendChat, Messages, playerData } = useContext(GameContext);
   const [message, setmessage] = useState("");
   const [status, setStatus] = useState("");
 
@@ -23,16 +23,18 @@ const Chat = () => {
       <div id="chat-message" className="chat-message chat-message-active W100">
         {Messages.length !== 0 &&
           Messages.map((message, index) => {
-            if (message.author) {
+            if (message.author === playerData.name) {
               return (
                 <div key={index} className="chat send-chat W100">
-                  {message.message}
+                  <h6>{message.author}</h6>
+                  <p>{message.message}</p>
                 </div>
               );
             } else {
               return (
                 <div key={index} className="chat received-chat W100">
-                  {message.message}
+                  <h6>{message.author}</h6>
+                  <p>{message.message}</p>
                 </div>
               );
             }
