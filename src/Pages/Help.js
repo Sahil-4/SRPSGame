@@ -2,9 +2,9 @@ import React from "react";
 
 const Help = () => {
   return (
-    <div className="help-page">
+    <div className="center help-page">
       <h1>Rock Paper Scissor Game</h1>
-      <h3>How To Play</h3>
+      <h2>How To Play</h2>
       <p>Tap on Start and Select which type game you want to play</p>
       <ol>
         <li>1. Single Player(With Computer)</li>
@@ -18,7 +18,7 @@ const Help = () => {
       </ol>
 
       <p>to choose the option simply tap on that option.</p>
-      <h3>Multiplayer Mode</h3>
+      <h2>Multiplayer Mode</h2>
       <p>To play with Your Friend You need to Fill The Given Fields:</p>
       <ol>
         <li>1. Your Name </li>
@@ -28,7 +28,7 @@ const Help = () => {
       <p>Note : You and Your Friend both have to input same PIN</p>
       <h4>Now you can Enjoy Your Game.</h4>
 
-      <h3>Rules : </h3>
+      <h2>Rules : </h2>
       <ol>
         <li>1. Rock can beat Scissor & can be beaten by Paper </li>
         <li>2. Scissor can beat Paper & can be beaten by Rock </li>

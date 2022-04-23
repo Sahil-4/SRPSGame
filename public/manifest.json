@@ -1,6 +1,6 @@
 {
-  "short_name": "SRPSGame",
-  "name": "Simple Rock Paper Scissor Game",
+  "short_name": "RPSGame",
+  "name": "Rock Paper Scissor Game",
   "icons": [
     {
       "src": "favicon.ico",

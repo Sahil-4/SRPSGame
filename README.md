@@ -1,7 +1,7 @@
-# SRPSGame
-SRPSG (Simple Rock Paper Scissor Game)
-Simple Web Based Game
+# Rock Paper Scissor Game 
+RPSG (Rock Paper Scissor Game)
+Web Based Game
 WEB-GAME
 Used - HTML CSS and JS
 Created by Sahil-4 (Sahil & Co.)
-Ver 0.9
+Version : 0.9

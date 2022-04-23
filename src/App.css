@@ -1,186 +1,76 @@
-/* Styling home page */
-.home-page {
-  position: fixed;
-  top: 70px;
-  left: 70px;
+.about {
+    font-size: 1.2rem;
 }
 
-.home-page-nav-links {
-  font-size: 1.7rem;
-  margin: 5px 0;
-  cursor: pointer;
-  color: #fffaff;
+.help-page {
+    margin: 18px 0;
+    text-align: left;
 }
 
-.creator-signature {
-  color: #0e0f19;
-  font-size: 2rem;
+/* styling game page */
+.game-page {
+    text-align: center;
+    background: #639163;
 }
 
-.ask-game-type {
-  height: 100vh;
-  width: 100vw;
-  background: red;
-}
-/* Styled home page */
-
-/* Styling alert box */
-.alert-box {
-  color: #fffaff;
-  background: #a020a0;
-  border-radius: 0 0 4px 4px;
-}
-
-.progress-bar {
-  height: 5px;
-  margin-top: 3px;
-}
-
-#progress {
-  height: 100%;
-  width: 0%;
-  background: #0a0a0a;
-  animation-name: incwidth;
-  animation-duration: 3s;
-  animation-timing-function: linear;
-}
-
-@keyframes incwidth {
-  from {
-    width: 100%;
-  }
-  to {
-    width: 0%;
-  }
-}
-
-/* Styling alert box */
-
-/* Styling game page */
 .game-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin: 7vh 0;
+    margin-top: 5%;
 }
 
-.score-boards {
-  font-size: 1rem;
-  margin: 13px 0;
+.scoreboard {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -80%);
 }
 
-#result {
-  font-size: 2rem;
-  text-align: center;
-  margin: 18px 0;
+.boards-container {
+    display: flex;
 }
 
-.options-box {
-  margin: 18px 0;
+.board {
+    width: 50%;
+}
+
+.points {
+    font-size: 6rem;
+}
+
+.player {
+    font-size: 1.5rem;
+}
+
+.result {
+    margin-top: 6px;
+    font-size: 2rem;
+}
+
+.choices {
+    height: 128px;
+    width: 100%;
+    position: fixed;
+    bottom: 100px;
 }
 
 .choice-image {
-  height: 120px;
-  width: 33%;
-  border: 1px solid #0e0f19;
-}
-/* Styled game page */
-
-/* Styling login page */
-.login-page {
-  font-size: 2rem;
-  margin-top: 13vh;
+    width: 33%;
 }
 
-.input {
-  width: 80%;
-  margin: auto;
-  outline: none;
-  display: block;
-  font-size: 1.5rem;
-  border-radius: 2px;
-  margin-bottom: 3px;
-  border: transparent;
-}
-
-.btn {
-  width: 25%;
-  height: 5%;
-  float: right;
-  outline: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-  border-radius: 3px;
-  margin: 12px 60px 0 0;
-  border: transparent;
-}
-/* Styled login page */
-
-/* Styling chats section */
+/* Styling chat box */
 .chat-box {
-  height: 20%;
-  position: fixed;
-  bottom: 0;
-  transition-duration: 1.5s;
+    position: fixed;
+    bottom: 0;
 }
 
-.chat-box-active {
-  height: 70%;
+.chat-form {
+    height: 36px;
+    text-align: left;
 }
 
-.exp-or-col-chats-btn {
-  height: 20px;
-  position: fixed;
-  right: 0;
+.chat-input {
+    width: 85%;
 }
 
-.chat-message {
-  background: #607471;
-  position: relative;
-  top: 20px;
-  padding-bottom: 40px;
+.send-btn {
+    width: 15%;
 }
-
-.chat-message-active {
-  height: calc(100% - 20px);
-}
-
-.chat {
-  width: 60%;
-  color: #fffaff;
-  background: #0e0f19;
-  margin: 3px 0;
-  padding: 0 3px;
-  border-radius: 6px;
-}
-
-.send-chat {
-  text-align: right;
-  float: right;
-}
-
-#chat-form {
-  position: fixed;
-  bottom: 0;
-}
-
-.chat-form-element {
-  height: 36px;
-  color: #0e0f19;
-  background: #fffaff;
-  outline: none;
-  border: 1px solid #0e0f19;
-}
-
-.message-box {
-  width: 75%;
-  overflow: hidden;
-}
-
-.chat-button {
-  width: 10%;
-}
-
-#send-chat-button {
-  width: 15%;
-}
-/* Styled chats section */
