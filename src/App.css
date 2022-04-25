@@ -1,62 +1,37 @@
-.about {
+.about,
+.help-page {
     font-size: 1.2rem;
 }
 
-.help-page {
-    margin: 18px 0;
-    text-align: left;
+/* Styling login page */
+.login-form {
+    padding: 5% 5%;
+    width: 70%;
 }
 
-/* styling game page */
-.game-page {
-    text-align: center;
-    background: #639163;
-}
-
-.game-title {
-    margin-top: 5%;
-}
-
-.scoreboard {
-    position: absolute;
-    top: 50vh;
-    left: 50vw;
-    transform: translate(-50%, -80%);
-}
-
-.boards-container {
-    display: flex;
-}
-
-.board {
-    width: 50%;
-}
-
-.points {
-    font-size: 6rem;
-}
-
-.player {
-    font-size: 1.5rem;
-}
-
-.result {
-    margin-top: 6px;
-    font-size: 2rem;
-}
-
-.choices {
-    height: 128px;
+.input {
+    height: 38px;
     width: 100%;
-    position: fixed;
-    bottom: 100px;
+    display: block;
+    margin: 3% auto;
+    outline: 1px solid black;
+    font-size: 1.5rem;
+    border-radius: 2px;
+    margin-bottom: 3px;
+    border: transparent;
 }
 
-.choice-image {
-    width: 33%;
+.btn {
+    display: block;
+    margin: 5% auto;
+    outline: 1px solid black;
+    font-size: 1.5rem;
+    border-radius: 2px;
+    margin-bottom: 3px;
+    border: transparent;
 }
 
-/* Styling chat box */
+/* styling chats section */
 .chat-box {
     position: fixed;
     bottom: 0;
@@ -73,4 +48,78 @@
 
 .send-btn {
     width: 15%;
+}
+
+.exp-or-col-chats-btn {
+    height: 28px;
+    float: right;
+}
+
+.chat-message {
+    height: 56px;
+    background: #6597e7;
+}
+
+.chat-message-active {
+    height: 70vh;
+}
+
+.chat {
+    height: auto;
+    width: 60%;
+    color: #000000;
+    background-color: #FFFFFF;
+    text-align: left;
+    float: left;
+    word-wrap: break-word;
+    margin: 3px 5px;
+    padding: 3px;
+    border-radius: 7px 7px 7px 0px;
+}
+
+.chat-send {
+    color: #FFFFFF;
+    background-color: #1477D4;
+    text-align: right;
+    float: right;
+    border-radius: 7px 7px 0px 7px;
+}
+
+.message {
+    font-size: 1.2rem;
+}
+
+/* styling game page */
+.game-page {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.title {
+    text-align: center;
+}
+
+.boards-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.points {
+    font-size: 7rem;
+}
+
+.player {
+    font-size: 1.5rem;
+}
+
+.result {
+    font-size: 2.7rem;
+    margin-bottom: 5%;
+}
+
+.choice-image {
+    height: 130px;
+    max-width: 33%;
 }

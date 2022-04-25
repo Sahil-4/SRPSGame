@@ -9,11 +9,15 @@ const Singleplayer = () => {
   }
 
   return (
-    <div className="game-page H100 W100">
-      <h1 className="game-title">Rock Paper Scissor</h1>
-      <Scoreboard />
-      <Optionsbox onClickFunction={onClickFunction} />
-    </div>
+    <>
+      <div className="title W100">
+        <h1>Rock Paper Scissor</h1>
+      </div>
+      <div className="game-page W100">
+        <Scoreboard />
+        <Optionsbox onClickFunction={onClickFunction} />
+      </div>
+    </>
   );
 };
 

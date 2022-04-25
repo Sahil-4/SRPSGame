@@ -15,7 +15,9 @@ const Scoreboard = () => {
           <h1 className="player">Opponent</h1>
         </div>
       </div>
-      <h1 className="result">You win.</h1>
+      <div className="result W100">
+        <h1>You win</h1>
+      </div>
     </div>
   );
 };
