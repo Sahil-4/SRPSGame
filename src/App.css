@@ -1,6 +1,12 @@
 .about,
+.help-page,
+.home {
+    font-size: 1.7rem;
+    text-align: center;
+}
+
 .help-page {
-    font-size: 1.2rem;
+    text-align: left;
 }
 
 /* Styling login page */
@@ -98,6 +104,7 @@
 }
 
 .title {
+    font-size: 2rem;
     text-align: center;
 }
 
@@ -122,4 +129,36 @@
 .choice-image {
     height: 130px;
     max-width: 33%;
+}
+
+/* Styling alert box */
+.alert-box {
+    color: #fffaff;
+    background: #a020a0;
+    text-align: left;
+    border-radius: 0 0 4px 4px;
+}
+
+.progress-bar {
+    height: 5px;
+    margin-top: 3px;
+}
+
+#progress {
+    height: 100%;
+    width: 0%;
+    background: #0a0a0a;
+    animation-name: incwidth;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+}
+
+@keyframes incwidth {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
 }

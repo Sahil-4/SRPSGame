@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Scoreboard from "../Components/Scoreboard";
 import Optionsbox from "../Components/Optionsbox";
+import GameContext from "../Context/Game/GameContext";
 
 const Singleplayer = () => {
-
-  const onClickFunction = (data) => {
-    console.log(data);
-  }
+  const { playWithBot } = useContext(GameContext);
 
   return (
     <>
@@ -15,7 +13,7 @@ const Singleplayer = () => {
       </div>
       <div className="game-page W100">
         <Scoreboard />
-        <Optionsbox onClickFunction={onClickFunction} />
+        <Optionsbox onClickFunction={playWithBot} />
       </div>
     </>
   );

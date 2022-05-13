@@ -8,16 +8,19 @@ import Test from "./Pages/Test";
 import GameMultiplayer from "./Pages/GameMultiplayer";
 import GameSingleplayer from "./Pages/GameSingleplayer";
 import PageNotFound from "./Pages/PageNotFound";
+import GameState from "./Context/Game/GameState";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
+import Alert from "./Components/Alert";
 
 
 function App() {
   return (
-    <>
+    <GameState>
+      <Alert />
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -30,7 +33,7 @@ function App() {
           <Route exact path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
-    </>
+    </GameState>
   );
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 
 const Help = () => {
   return (
-    <div className="help-page">
+    <div className="help-page W100">
       <h1>Rock Paper Scissor Game</h1>
       <h2>How To Play</h2>
       <p>Tap on Start and Select which type game you want to play</p>
