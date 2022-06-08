@@ -10,14 +10,7 @@ const Multiplayer = () => {
   const { Player, connectToServer, sendChoice } = useContext(GameContext);
 
   useEffect(() => {
-    if (Player.name) {
-      return () => {
-        console.log("calling server");
-        connectToServer();
-      };
-    } else {
-      Navigate("/join");
-    }
+    Player.name ? connectToServer() : Navigate("/join");
   }, []);
 
   return (

@@ -7,9 +7,8 @@ const Login = () => {
   const { Player, setPlayer, setDefault } = useContext(GameContext);
 
   useEffect(() => {
-    setDefault()
+    setDefault();
   }, []);
-
 
   const handleOnChange = (e) => {
     setPlayer({ ...Player, [e.target.name]: e.target.value });

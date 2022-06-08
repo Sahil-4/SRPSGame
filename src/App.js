@@ -1,21 +1,16 @@
 import React from "react";
-import './App.css';
-import Home from './Pages/Home';
-import Help from './Pages/Help';
-import About from './Pages/About';
+import "./App.css";
+import Home from "./Pages/Home";
+import Help from "./Pages/Help";
+import About from "./Pages/About";
 import Login from "./Pages/Login";
 import Test from "./Pages/Test";
 import GameMultiplayer from "./Pages/GameMultiplayer";
 import GameSingleplayer from "./Pages/GameSingleplayer";
 import PageNotFound from "./Pages/PageNotFound";
 import GameState from "./Context/Game/GameState";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Alert from "./Components/Alert";
-
 
 function App() {
   return (

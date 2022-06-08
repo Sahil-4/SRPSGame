@@ -10,7 +10,7 @@ const Chatboard = () => {
 
   const toggleChatBox = () => {
     setStatus(status === "inactive" ? "active" : "inactive");
-  }
+  };
 
   const handleOnChange = (e) => {
     setMessage(e.target.value);
@@ -26,7 +26,7 @@ const Chatboard = () => {
     try {
       const element = document.getElementById("chat-message");
       element.scrollTop = element.scrollHeight;
-    } catch (error) { }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -37,7 +37,9 @@ const Chatboard = () => {
 
   return (
     <div className="chat-box W100">
-      <button className="exp-or-col-chats-btn" onClick={toggleChatBox}>{status === "inactive" ? "Open" : "Close"}</button>
+      <button className="exp-or-col-chats-btn" onClick={toggleChatBox}>
+        {status === "inactive" ? "Open" : "Close"}
+      </button>
 
       <div
         id="chat-message"

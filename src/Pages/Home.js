@@ -36,7 +36,9 @@ const Home = () => {
     </>
   );
 
-  return <div className="home center W100">{state ? Home : chooseGameType}</div>;
+  return (
+    <div className="home center W100">{state ? Home : chooseGameType}</div>
+  );
 };
 
 export default Home;
