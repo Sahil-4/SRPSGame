@@ -67,7 +67,7 @@ const GameState = (props) => {
   };
 
   const connectToServer = () => {
-    socket = io("http://localhost:5000/", {
+    socket = io("https://backend4rps-game.herokuapp.com/", {
       withCredentials: false,
       reconnection: false,
     });
