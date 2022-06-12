@@ -1,6 +1,6 @@
 {
   "name": "srpsgame",
-  "version": "1.2.0",
+  "version": "2.1.0",
   "description": "Rock Paper Scissor Game created by Sahil-4(aka Sahil)",
   "private": true,
   "dependencies": {
