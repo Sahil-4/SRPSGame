@@ -1,6 +1,7 @@
 import { useState } from "react";
 import GameContext from "./GameContext";
 import { io } from "socket.io-client";
+import Tap from "../../Components/Assets/tap.mp3";
 
 var socket;
 
@@ -23,6 +24,11 @@ const GameState = (props) => {
   const [Messages, setMessages] = useState([]);
 
   const [Alert, setAlert] = useState({ type: "", msg: "" });
+
+  const playTone = () => {
+    let ad = new Audio(Tap);
+    ad.play();
+  };
 
   const setDefault = () => {
     setPlayer({
@@ -51,6 +57,8 @@ const GameState = (props) => {
 
     setChoices({ player: selfChoice, opponent: opponentChoice });
 
+    playTone();
+
     if (opponentChoice === selfChoice) {
       setResult("Its a Draw");
     } else if (
@@ -67,7 +75,7 @@ const GameState = (props) => {
   };
 
   const connectToServer = () => {
-    socket = io("https://backend4rps-game.herokuapp.com/", {
+    socket = io("https://srpsgame-backend.onrender.com/", {
       withCredentials: false,
       reconnection: false,
     });
@@ -93,6 +101,7 @@ const GameState = (props) => {
 
     socket.on("receive-message", (data) => {
       setMessages((Messages) => [...Messages, data]);
+      playTone();
     });
 
     socket.on("receive-choice", (choice) => {
@@ -128,6 +137,7 @@ const GameState = (props) => {
       setResult("Waiting...");
       let Data = { room_code: Player.room_code, choice: options[choice] };
       socket.emit("send-choice", Data);
+      playTone();
     } catch (error) {
       showAlert("Error", "Please login again.");
     }

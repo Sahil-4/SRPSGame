@@ -22,11 +22,13 @@ const Help = () => {
       <p>To play with Your Friend You need to Fill The Given Fields:</p>
       <ol>
         <li>1. Your Name </li>
-        <li>2. Your Friend</li>
-        <li>3. A 3 digit unique PIN</li>
+        <li>2. A 3 digit Unique room code</li>
       </ol>
-      <p>Note : You and Your Friend both have to input same PIN</p>
+      <p>Remember You and Your Friend both have to enter same room code</p>
       <h4>Now you can Enjoy Your Game.</h4>
+
+      <h2>Chats</h2>
+      <p>You can use built-in chat feature to chat with your opponent</p>
 
       <h2>Rules : </h2>
       <ol>
