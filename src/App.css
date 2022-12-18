@@ -1,18 +1,20 @@
 .index .start {
     width: 100%;
     color: var(--white);
-    top: 50%;
-    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
 }
 
-.index .start span {
-    color: var(--white);
+.index .start>a {
     font-weight: bold;
-    font-size: 2.1rem;
-    display: block;
-    cursor: pointer;
+    color: var(--black);
+    width: fit-content;
 }
 
-.index .start p {
-    margin: 13px;
+.index .start .creater_signature {
+    margin: 9px 0;
 }
