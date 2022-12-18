@@ -1,25 +1,19 @@
-import React, { useContext } from "react";
-import GameContext from "../Context/Game/GameContext";
+import React from "react";
 
 const Scoreboard = () => {
-  const { Player, Points, Result, Choices } = useContext(GameContext);
-
   return (
-    <div className="scoreboard W100">
-      <div className="boards-container W100">
-        <div className="you board">
-          <h1 className="points">{Points.player}</h1>
-          <h1 className="choice">{Choices.player}</h1>
-          <h1 className="player">{Player.name || "You"}</h1>
-        </div>
-        <div className="opponent board">
-          <h1 className="points">{Points.opponent}</h1>
-          <h1 className="choice">{Choices.opponent}</h1>
-          <h1 className="player">{Player.opponent || "Computer"}</h1>
-        </div>
+    <div className="scoreboard">
+      <div className="points">
+        <span>0</span>
+        <span>0</span>
       </div>
-      <div className="result W100">
-        <h1>{Result}</h1>
+      <div className="choices">
+        <span>Rock</span>
+        <span>Rock</span>
+      </div>
+      <div className="names">
+        <span>You</span>
+        <span>Opponent</span>
       </div>
     </div>
   );
