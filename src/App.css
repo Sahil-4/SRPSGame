@@ -12,6 +12,12 @@
     flex-direction: column;
 }
 
+.index .start .title {
+    font-weight: bold;
+    color: var(--black);
+    margin-bottom: 15px;
+}
+
 .index .start>a {
     margin: 5px 0;
     font-weight: bold;
@@ -176,4 +182,22 @@
     width: 25%;
     color: var(--white);
     background-color: var(--blue_dark);
+}
+
+.help_page {
+    width: fit-content;
+    margin: auto;
+}
+
+@media screen and (min-width : 720px) {
+    .game_main {
+        width: 420px;
+        margin: auto;
+    }
+
+    .chat_box {
+        width: 420px;
+        margin: 0 50%;
+        transform: translate(-50%, 0);
+    }
 }

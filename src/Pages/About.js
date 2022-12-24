@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="about center W100">
+    <div className="center about_page">
       <h3>Rock Paper Scissor Game</h3>
       <h3>version: 2.1.0</h3>
       <h3 className="creator-signature">
