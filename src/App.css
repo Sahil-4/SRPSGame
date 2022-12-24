@@ -78,6 +78,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 0 24px;
 }
 
 .game_main .scoreboard .points {
@@ -103,4 +104,76 @@
 .game_main .options img {
     margin: 5px;
     padding: 3px;
+}
+
+.chat_box {
+    width: 100%;
+    background: var(--bg_main);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.toggle_chats {
+    color: var(--white);
+    background-color: var(--blue_dark);
+    padding: 3px;
+    float: right;
+    display: block;
+    border: 1px solid var(--black);
+}
+
+.chats_container {
+    height: 86px;
+    overflow-y: scroll;
+    padding: 3px;
+    transition: height 0.4s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.chats_container_active {
+    height: 360px;
+}
+
+.chat {
+    height: auto;
+    width: fit-content;
+    max-width: 60%;
+    color: var(--black);
+    background-color: var(--white);
+    text-align: left;
+    float: left;
+    word-wrap: break-word;
+    margin: 3px 5px;
+    padding: 5px;
+    font-size: 1.2rem;
+    border-radius: 7px 7px 7px 0px;
+}
+
+.chat_send {
+    color: var(--white);
+    background-color: var(--blue_dark);
+    text-align: right;
+    float: right;
+    border-radius: 7px 7px 0px 7px;
+}
+
+.chat_form {
+    width: 100%;
+}
+
+.chat_box form input,
+.chat_box form button {
+    height: 36px;
+    width: 75%;
+    padding: 3px;
+    border: 1px solid var(--black);
+}
+
+.chat_box form button {
+    width: 25%;
+    color: var(--white);
+    background-color: var(--blue_dark);
 }

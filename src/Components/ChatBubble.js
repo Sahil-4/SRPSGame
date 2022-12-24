@@ -1,16 +1,22 @@
 import React, { useContext } from "react";
 import GameContext from "../Context/Game/GameContext";
 
-const ChatBubble = (props) => {
-  const { Player } = useContext(GameContext);
+const ChatBubble = ({ message }) => {
+  // const { Player } = useContext(GameContext);
 
-  return props.message.author === Player.name ? (
-    <div className="chat chat-send">
-      <p className="message">{props.message.message}</p>
-    </div>
-  ) : (
-    <div className="chat chat-recv">
-      <p className="message">{props.message.message}</p>
+  const Player = {
+    name: "self",
+  };
+
+  return (
+    <div>
+      <div
+        className={`chat ${
+          message.author === Player.name ? "chat_send" : "chat_recv"
+        }`}
+      >
+        <p>{message.message}</p>
+      </div>
     </div>
   );
 };

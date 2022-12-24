@@ -1,12 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import GameContext from "../Context/Game/GameContext";
+import React, { useState, useEffect } from "react";
 import ChatBubble from "./ChatBubble";
 
 const Chatboard = () => {
   const [status, setStatus] = useState("inactive");
   const [message, setMessage] = useState("");
 
-  const { Messages, sendChat } = useContext(GameContext);
+  const Messages = [];
+
+  const sendChat = () => {};
 
   const toggleChatBox = () => {
     setStatus(status === "inactive" ? "active" : "inactive");
@@ -33,33 +34,37 @@ const Chatboard = () => {
     return () => {
       scrollToBottom();
     };
-  }, [Messages]);
+  }, []);
 
   return (
-    <div className="chat-box W100">
-      <button className="exp-or-col-chats-btn" onClick={toggleChatBox}>
-        {status === "inactive" ? "Open" : "Close"}
-      </button>
-
-      <div
-        id="chat-message"
-        className={`chat-message chat-message-${status} W100`}
-      >
-        {Messages.map((message, index) => (
-          <ChatBubble key={index} message={message} />
-        ))}
+    <div className="chat_box">
+      <div>
+        <button className="toggle_chats" onClick={toggleChatBox}>
+          {status === "inactive" ? "Open" : "Close"}
+        </button>
       </div>
 
-      <form className="chat-form W100" method="POST" onSubmit={handleOnSubmit}>
+      <div
+        id="chat_container"
+        className={`chats_container chats_container_${status}`}
+      >
+        <div>
+          {Messages.map((message, index) => (
+            <ChatBubble key={index} message={message} />
+          ))}
+        </div>
+      </div>
+
+      <form className="chat_form" method="POST" onSubmit={handleOnSubmit}>
         <input
-          className="chat-input H100"
+          className="chat_input H100"
           type="text"
           required="True"
           value={message}
           onChange={handleOnChange}
-          placeholder="Type your message..."
+          placeholder="Message"
         />
-        <button className="send-btn H100" type="submit">
+        <button className="send_btn H100" type="submit">
           Send
         </button>
       </form>
