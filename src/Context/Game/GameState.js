@@ -8,6 +8,21 @@ var socket;
 const GameState = (props) => {
   let options = ["Rock", "Paper", "Scissor"];
 
+  const [profile, setProfile] = useState({
+    name_self: "Me",
+    name_opponent: "Dummy",
+    room_code: "000",
+    socketID: "",
+  });
+
+  const [data, setData] = useState({
+    choice: { self: "", opponent: "" },
+    points: { self: 0, opponent: 0 },
+    result: "Waiting...",
+  });
+
+  const [chats, setChats] = useState([]);
+
   const [Player, setPlayer] = useState({
     name: "",
     opponent: "",
@@ -168,6 +183,8 @@ const GameState = (props) => {
         sendChat,
         sendChoice,
         setDefault,
+        profile,
+        setProfile,
       }}
     >
       {props.children}

@@ -11,6 +11,12 @@ const Game = () => {
 
   console.log(type);
 
+  // TODO : check for game type and 
+  // - handle choices 
+  // - handle scores 
+  // - handle result 
+  // - handle chats 
+
   return (
     <div className="game_main">
       <Gametitle />

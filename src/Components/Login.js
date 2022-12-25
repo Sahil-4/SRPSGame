@@ -1,16 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router";
+import GameContext from "../Context/Game/GameContext";
 
 const Login = () => {
+  const { profile, setProfile } = useContext(GameContext);
+  const Navigate = useNavigate();
+
+  const handleOnchange = (e) => {
+    setProfile({ ...profile, [e.target.name]: e.target.value });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    Navigate("/game/duo");
+  };
+
   return (
     <div className="center start login">
       <p>Login</p>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <input type="text" name="username" id="uname" placeholder="Your Name" />
+      <form method="POST" onSubmit={(e) => handleLogin(e)}>
+        <input
+          type="text"
+          name="name_self"
+          placeholder="Your Name"
+          required="True"
+          onChange={(e) => handleOnchange(e)}
+        />
         <input
           type="number"
-          name="roomcode"
-          id="rcode"
+          name="room_code"
           placeholder="Room Code"
+          required="True"
+          onChange={(e) => handleOnchange(e)}
         />
         <button type="submit">Enter</button>
       </form>

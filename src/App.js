@@ -8,40 +8,43 @@ import Start from "./Components/Start";
 import Selectgame from "./Components/Selectgame";
 import Login from "./Components/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import GameState from "./Context/Game/GameState";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Index>
-              <Start />
-            </Index>
-          }
-        />
-        <Route
-          path="/game-type?"
-          element={
-            <Index>
-              <Selectgame />
-            </Index>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <Index>
-              <Login />
-            </Index>
-          }
-        />
-        <Route path="/game/:type" element={<Game />} />
-        <Route path="/help" element={<Help />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </Router>
+    <GameState>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Index>
+                <Start />
+              </Index>
+            }
+          />
+          <Route
+            path="/game-type?"
+            element={
+              <Index>
+                <Selectgame />
+              </Index>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <Index>
+                <Login />
+              </Index>
+            }
+          />
+          <Route path="/game/:type" element={<Game />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Router>
+    </GameState>
   );
 }
 
