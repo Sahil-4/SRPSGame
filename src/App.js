@@ -26,7 +26,7 @@ function App() {
             }
           />
           <Route
-            path="/game-type?"
+            path="/game-type"
             element={
               <Index>
                 <Selectgame />

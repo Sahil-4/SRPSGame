@@ -7,7 +7,7 @@ const Start = () => {
     <>
       <div className="center start">
         <Gametitle />
-        <Link to="/game-type?">Start</Link>
+        <Link to="/game-type">Start</Link>
         <Link to="/help">Help</Link>
         <Link to="/about">About</Link>
         <p className="creater_signature">

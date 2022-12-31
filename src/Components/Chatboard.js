@@ -30,9 +30,8 @@ const Chatboard = () => {
   };
 
   useEffect(() => {
-    return () => {
-      scrollToBottom();
-    };
+    scrollToBottom();
+    return () => {};
   }, [chats]);
 
   return (

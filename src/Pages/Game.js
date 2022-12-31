@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { useNavigate, useParams } from "react-router";
 import Gametitle from "../Components/Gametitle";
 import Scoreboard from "../Components/Scoreboard";
 import Result from "../Components/Result";
 import Optionsbox from "../Components/Optionsbox";
 import Chatboard from "../Components/Chatboard";
 import GameContext from "../Context/Game/GameContext";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Game = () => {
   const { type } = useParams();
@@ -20,14 +20,13 @@ const Game = () => {
   // - handle chats
 
   useEffect(() => {
+    if (type === "duo" && profile.room_code) {
+      connectToServer();
+    }
     if (type === "duo" && profile.room_code === null) {
       navigate("/login");
     }
-    return () => {
-      if (type === "duo" && profile.room_code) {
-        connectToServer();
-      }
-    };
+    return () => {};
   }, []);
 
   return (
