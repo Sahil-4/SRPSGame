@@ -6,37 +6,28 @@ import Tap from "../../Components/Assets/tap.mp3";
 var socket;
 
 const GameState = (props) => {
-  let options = ["Rock", "Paper", "Scissor"];
+  let options = ["Rock", "Paper", "Scissors"];
 
   const [profile, setProfile] = useState({
     name_self: "Me",
     name_opponent: "Dummy",
-    room_code: "000",
+    room_code: null,
     socketID: "",
   });
 
-  const [data, setData] = useState({
-    choice: { self: "", opponent: "" },
-    points: { self: 0, opponent: 0 },
-    result: "Waiting...",
-  });
-
-  const [chats, setChats] = useState([]);
-
-  const [Player, setPlayer] = useState({
-    name: "",
-    opponent: "",
-    room_code: "",
-    socketID: "",
-  });
-
-  const [Choices, setChoices] = useState({
-    player: "Choose first",
+  const [choice, setChoice] = useState({
+    self: "Choose first",
     opponent: "Waiting...",
   });
-  const [Points, setPoints] = useState({ player: 0, opponent: 0 });
-  const [Result, setResult] = useState("Draw");
-  const [Messages, setMessages] = useState([]);
+
+  const [points, setPoints] = useState({
+    self: 0,
+    opponent: 0,
+  });
+
+  const [result, setResult] = useState("Waiting...");
+
+  const [chats, setChats] = useState([]);
 
   const [Alert, setAlert] = useState({ type: "", msg: "" });
 
@@ -46,20 +37,28 @@ const GameState = (props) => {
   };
 
   const setDefault = () => {
-    setPlayer({
-      name: "",
-      opponent: "",
-      room_code: "",
+    // set all data to default
+    socket = null;
+
+    setProfile({
+      name_self: "Me",
+      name_opponent: "Dummy",
+      room_code: null,
       socketID: "",
     });
 
-    setChoices({ player: "Choose first", opponent: "Waiting..." });
-    setPoints({ player: 0, opponent: 0 });
-    setResult("Draw");
+    setChoice({ self: "Choose first", opponent: "Waiting..." });
+    setPoints({ self: 0, opponent: 0 });
+    setResult("Waiting...");
+    setChats([]);
   };
 
   const showAlert = (type, msg) => {
     setAlert({ type: type, msg: msg });
+
+    setTimeout(() => {
+      setAlert({ type: "", msg: "" });
+    }, 3000);
   };
 
   const computerChoice = () => {
@@ -70,22 +69,22 @@ const GameState = (props) => {
     let selfChoice = options[userChoice];
     let opponentChoice = options[computerChoice()];
 
-    setChoices({ player: selfChoice, opponent: opponentChoice });
+    setChoice({ self: selfChoice, opponent: opponentChoice });
 
     playTone();
 
     if (opponentChoice === selfChoice) {
-      setResult("Its a Draw");
+      setResult("Draw");
     } else if (
       (opponentChoice === "Rock" && selfChoice === "Paper") ||
-      (opponentChoice === "Paper" && selfChoice === "Scissor") ||
-      (opponentChoice === "Scissor" && selfChoice === "Rock")
+      (opponentChoice === "Paper" && selfChoice === "Scissors") ||
+      (opponentChoice === "Scissors" && selfChoice === "Rock")
     ) {
-      setResult("You Win");
-      setPoints({ ...Points, player: Points.player + 1 });
+      setResult("You win");
+      setPoints({ ...points, self: points.self + 1 });
     } else {
-      setResult("Computer Win");
-      setPoints({ ...Points, opponent: Points.opponent + 1 });
+      setResult("Dummy win");
+      setPoints({ ...points, opponent: points.opponent + 1 });
     }
   };
 
@@ -96,49 +95,52 @@ const GameState = (props) => {
     });
 
     socket.on("connect", () => {
-      setPlayer({ ...Player, socketID: socket.id });
+      setProfile({ ...profile, socketID: socket.id });
     });
 
     socket.on("connect_error", (error) => {
+      showAlert("Error, Please try again.");
       console.log(error);
     });
 
-    socket.emit("join-room", Player);
+    socket.emit("join-room", profile);
 
     socket.on("players", (players) => {
-      let opponent = players[0] === Player.name ? players[1] : players[0];
-      setPlayer({ ...Player, opponent: opponent });
+      let opponent = players[0] === profile.name_self ? players[1] : players[0];
+      opponent = opponent ? opponent : "Waiting...";
+      setProfile({ ...profile, name_opponent: opponent });
     });
 
     socket.on("room-full", (message) => {
+      showAlert("Error", "Room is full try different code");
       console.log(message);
     });
 
     socket.on("receive-message", (data) => {
-      setMessages((Messages) => [...Messages, data]);
+      setChats((chats) => [...chats, data]);
       playTone();
     });
 
-    socket.on("receive-choice", (choice) => {
-      setChoices((Choices) => ({ ...Choices, opponent: choice }));
+    socket.on("receive-choice", (ch) => {
+      setChoice((choice) => ({ ...choice, opponent: ch }));
     });
 
     socket.on("receive-result", (result) => {
       setResult(result);
-      increasePoints(result);
+      result !== "Draw" && increasePoints(result);
     });
   };
 
   const sendChat = (message) => {
     try {
       let Data = {
-        room_code: Player.room_code,
+        room_code: profile.room_code,
         message: message,
-        author: Player.name,
+        author: profile.name_self,
       };
-      setMessages((Messages) => [
-        ...Messages,
-        { message: message, author: Player.name },
+      setChats((chats) => [
+        ...chats,
+        { message: message, author: profile.name_self },
       ]);
       socket.emit("send-message", Data);
     } catch (error) {
@@ -146,11 +148,11 @@ const GameState = (props) => {
     }
   };
 
-  const sendChoice = (choice) => {
+  const sendChoice = (ch) => {
+    setChoice({ self: options[ch], opponent: "Waiting..." });
+    setResult("Waiting...");
     try {
-      setChoices({ player: options[choice], opponent: "Waiting..." });
-      setResult("Waiting...");
-      let Data = { room_code: Player.room_code, choice: options[choice] };
+      let Data = { room_code: profile.room_code, choice: options[ch] };
       socket.emit("send-choice", Data);
       playTone();
     } catch (error) {
@@ -159,12 +161,10 @@ const GameState = (props) => {
   };
 
   const increasePoints = (result) => {
-    if (result !== "Draw") {
-      if (result === "You win") {
-        setPoints((Points) => ({ ...Points, player: Points.player + 1 }));
-      } else {
-        setPoints((Points) => ({ ...Points, opponent: Points.opponent + 1 }));
-      }
+    if (result === "You win") {
+      setPoints((points) => ({ ...points, self: points.self + 1 }));
+    } else {
+      setPoints((points) => ({ ...points, opponent: points.opponent + 1 }));
     }
   };
 
@@ -173,18 +173,17 @@ const GameState = (props) => {
       value={{
         playWithBot,
         Alert,
-        Player,
-        Choices,
-        Points,
-        Result,
-        setPlayer,
         connectToServer,
-        Messages,
-        sendChat,
         sendChoice,
         setDefault,
         profile,
         setProfile,
+        choice,
+        points,
+        result,
+        chats,
+        sendChat,
+        showAlert,
       }}
     >
       {props.children}

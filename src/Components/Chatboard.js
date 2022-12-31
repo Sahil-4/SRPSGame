@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import GameContext from "../Context/Game/GameContext";
 import ChatBubble from "./ChatBubble";
 
 const Chatboard = () => {
+  const { chats, sendChat } = useContext(GameContext);
+
   const [status, setStatus] = useState("inactive");
   const [message, setMessage] = useState("");
-
-  const Messages = [];
-
-  const sendChat = () => {};
 
   const toggleChatBox = () => {
     setStatus(status === "inactive" ? "active" : "inactive");
@@ -25,7 +24,7 @@ const Chatboard = () => {
 
   const scrollToBottom = () => {
     try {
-      const element = document.getElementById("chat-message");
+      const element = document.getElementById("all_chats");
       element.scrollTop = element.scrollHeight;
     } catch (error) {}
   };
@@ -34,7 +33,7 @@ const Chatboard = () => {
     return () => {
       scrollToBottom();
     };
-  }, []);
+  }, [chats]);
 
   return (
     <div className="chat_box">
@@ -48,8 +47,8 @@ const Chatboard = () => {
         id="chat_container"
         className={`chats_container chats_container_${status}`}
       >
-        <div>
-          {Messages.map((message, index) => (
+        <div id="all_chats">
+          {chats.map((message, index) => (
             <ChatBubble key={index} message={message} />
           ))}
         </div>

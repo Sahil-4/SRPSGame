@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import rockImage from "./Assets/rock.png";
 import paperImage from "./Assets/paper.png";
 import scissorImage from "./Assets/scissor.png";
+import GameContext from "../Context/Game/GameContext";
 
-const Optionsbox = (props) => {
+const Optionsbox = ({ gametype }) => {
+  const { playWithBot, sendChoice } = useContext(GameContext);
+
+  const handleSelection = (s) => {
+    if (gametype === "solo") {
+      playWithBot(s);
+    } else if (gametype === "duo") {
+      sendChoice(s);
+    }
+  };
+
   return (
     <div className="options W100">
       <img
@@ -11,7 +22,7 @@ const Optionsbox = (props) => {
         title="rock"
         alt="Option Rock"
         onClick={() => {
-          console.log(1);
+          handleSelection(0);
         }}
       />
       <img
@@ -19,15 +30,15 @@ const Optionsbox = (props) => {
         title="paper"
         alt="Option Paper"
         onClick={() => {
-          console.log(2);
+          handleSelection(1);
         }}
       />
       <img
         src={scissorImage}
-        title="scissor"
-        alt="Option Scissor"
+        title="scissors"
+        alt="Option Scissors"
         onClick={() => {
-          console.log(3);
+          handleSelection(2);
         }}
       />
     </div>

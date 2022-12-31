@@ -1,27 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import GameContext from "../Context/Game/GameContext";
 
 const Alert = () => {
-  const { Alert, setAlert } = useContext(GameContext);
-
-  const hideALert = () => {
-    setTimeout(() => {
-      setAlert({ type: "", msg: "" });
-    }, 3000);
-  };
-
-  useEffect(() => {
-    if (Alert.type !== "") {
-      hideALert();
-    }
-  }, [Alert]);
+  const { Alert } = useContext(GameContext);
 
   return (
-    <div className="alert-box W100">
-      <p id="alert-type">{Alert.type}</p>
-      <p id="alert-msg">{Alert.msg}</p>
+    <div className="alert_box W100">
+      <p id="alert_type">{Alert.type}</p>
+      <p id="alert_msg">{Alert.msg}</p>
       {Alert.msg && (
-        <div className="progress-bar W100">
+        <div className="progress_bar W100">
           <div id="progress"></div>
         </div>
       )}

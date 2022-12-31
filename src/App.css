@@ -189,6 +189,27 @@
     margin: auto;
 }
 
+.alert_box {
+    color: var(--white);
+    background: var(--bg_main);
+    text-align: left;
+    border-radius: 0 0 4px 4px;
+}
+
+.progress_bar {
+    height: 5px;
+    margin-top: 3px;
+}
+
+#progress {
+    height: 100%;
+    width: 0%;
+    background: #0a0a0a;
+    animation-name: incwidth;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+}
+
 @media screen and (min-width : 720px) {
     .game_main {
         width: 420px;

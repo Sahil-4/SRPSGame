@@ -9,10 +9,12 @@ import Selectgame from "./Components/Selectgame";
 import Login from "./Components/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GameState from "./Context/Game/GameState";
+import Alert from "./Components/Alert";
 
 function App() {
   return (
     <GameState>
+      <Alert />
       <Router>
         <Routes>
           <Route

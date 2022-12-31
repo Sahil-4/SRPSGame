@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import GameContext from "../Context/Game/GameContext";
 
 const Login = () => {
-  const { profile, setProfile } = useContext(GameContext);
+  const { profile, setProfile, setDefault } = useContext(GameContext);
   const Navigate = useNavigate();
 
   const handleOnchange = (e) => {
@@ -14,6 +14,11 @@ const Login = () => {
     e.preventDefault();
     Navigate("/game/duo");
   };
+
+  useEffect(() => {
+    setDefault();
+    return () => {};
+  }, []);
 
   return (
     <div className="center start login">
@@ -31,6 +36,8 @@ const Login = () => {
           name="room_code"
           placeholder="Room Code"
           required="True"
+          min={100}
+          max={999}
           onChange={(e) => handleOnchange(e)}
         />
         <button type="submit">Enter</button>
