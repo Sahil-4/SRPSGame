@@ -1,6 +1,6 @@
 # Rock Paper Scissor Game Update 2.0
 
-Officially Hosted at : [https://srpsgame.web.app/](https://srpsgame.web.app/)
+Hosted at : [https://srpsgame.netlify.app/](https://srpsgame.netlify.app/)
 
 A Web Based Game Created by Sahil-4 (aka Sahil)
 
